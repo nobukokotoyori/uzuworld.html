@@ -31,65 +31,83 @@
     <header class="bg-uzu-blue text-white p-4 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="font-bold text-lg">UZUSHIO Holdings 株式会社</h1>
-            <a href="index.html" class="text-sm hover:text-gray-300 underline">トップページへ戻る</a>
+            <div class="flex items-center gap-4">
+                <!-- 言語切り替えボタン -->
+                <button onclick="toggleLanguage()" class="flex items-center gap-1 text-white hover:text-gray-300 transition text-xs md:text-sm border border-white/30 px-2 py-1 rounded-full bg-white/10">
+                    <i class="fas fa-globe"></i>
+                    <span id="lang-label">English</span>
+                </button>
+                <a href="index.html" class="text-sm hover:text-gray-300 underline" data-i18n="back_top">トップページへ戻る</a>
+            </div>
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-12 max-w-3xl">
-        <h2 class="text-3xl font-bold text-uzu-blue mb-8 border-b-2 border-uzu-blue pb-4">特定商取引法に基づく表記</h2>
+        <h2 class="text-3xl font-bold text-uzu-blue mb-8 border-b-2 border-uzu-blue pb-4" data-i18n="page_title">特定商取引法に基づく表記</h2>
 
         <div class="bg-white shadow rounded-lg overflow-hidden">
             <table class="w-full text-left border-collapse">
                 <tbody>
                     <tr class="border-b border-gray-200">
-                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700 w-1/3">販売業者</th>
-                        <td class="py-4 px-6">UZUSHIO ホールディングス株式会社<br><span class="text-xs text-gray-500">(UZUSHIO Holdings Co., Ltd.)</span></td>
+                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700 w-1/3" data-i18n="th_distributor">販売業者</th>
+                        <td class="py-4 px-6" data-i18n="td_distributor">UZUSHIO ホールディングス株式会社<br><span class="text-xs text-gray-500">(UZUSHIO Holdings Co., Ltd.)</span></td>
                     </tr>
                     <tr class="border-b border-gray-200">
-                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700">運営統括責任者</th>
-                        <td class="py-4 px-6">中村 慎吾</td>
+                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700" data-i18n="th_manager">運営統括責任者</th>
+                        <td class="py-4 px-6" data-i18n="td_manager">中村 慎吾</td>
                     </tr>
                     <tr class="border-b border-gray-200">
-                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700">所在地</th>
-                        <td class="py-4 px-6">〒594-0071<br>大阪府和泉市府中町1-5-13</td>
+                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700" data-i18n="th_address">所在地</th>
+                        <td class="py-4 px-6" data-i18n="td_address">〒594-0071<br>大阪府和泉市府中町1-5-13</td>
                     </tr>
                     <tr class="border-b border-gray-200">
-                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700">電話番号</th>
-                        <td class="py-4 px-6">
+                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700" data-i18n="th_phone">電話番号</th>
+                        <td class="py-4 px-6" data-i18n="td_phone">
                             請求があり次第提供致しますので、上記メールアドレスまでご連絡ください
                         </td>
                     </tr>
                     <tr class="border-b border-gray-200">
-                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700">メールアドレス</th>
+                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700" data-i18n="th_email">メールアドレス</th>
                         <td class="py-4 px-6">info@uzushio-holdings.com</td>
                     </tr>
                     <tr class="border-b border-gray-200">
-                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700">販売価格</th>
-                        <td class="py-4 px-6">各プロジェクトページの支援プラン毎に記載（日本円で税込表示）</td>
+                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700" data-i18n="th_price">販売価格</th>
+                        <td class="py-4 px-6" data-i18n="td_price">各プロジェクトページの支援プラン毎に記載（日本円で税込表示）</td>
                     </tr>
                     <tr class="border-b border-gray-200">
-                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700">商品代金以外の必要料金</th>
-                        <td class="py-4 px-6">インターネット接続にかかる通信回線等の諸費用</td>
+                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700" data-i18n="th_other_cost">商品代金以外の必要料金</th>
+                        <td class="py-4 px-6" data-i18n="td_other_cost">
+                            ・インターネット接続にかかる通信回線等の諸費用<br>
+                            ・銀行振込時の振込手数料<br>
+                            ・暗号資産送付時のネットワーク手数料（ガス代）
+                        </td>
                     </tr>
                     <tr class="border-b border-gray-200">
-                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700">支払方法</th>
-                        <td class="py-4 px-6">クレジットカード決済（VISA, MasterCard, JCB, AMEX 等）</td>
+                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700" data-i18n="th_payment">支払方法</th>
+                        <td class="py-4 px-6" data-i18n="td_payment">
+                            ・クレジットカード決済（VISA, MasterCard, JCB, AMEX 等）<br>
+                            ・銀行振込<br>
+                            ・暗号資産（仮想通貨）送付
+                        </td>
                     </tr>
                     <tr class="border-b border-gray-200">
-                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700">支払時期</th>
-                        <td class="py-4 px-6">ご利用のカード会社ごとに異なります。</td>
+                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700" data-i18n="th_timing">支払時期</th>
+                        <td class="py-4 px-6" data-i18n="td_timing">
+                            【クレジットカード】ご利用のカード会社ごとに異なります。<br>
+                            【銀行振込・暗号資産】お申し込みから原則として7日以内にお手続きください。
+                        </td>
                     </tr>
                     <tr class="border-b border-gray-200">
-                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700">引渡し時期</th>
-                        <td class="py-4 px-6">
-                            決済完了後、即時にPay-forwardチケット（食事提供権利）の購入手続きが完了します。<br>
+                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700" data-i18n="th_delivery">引渡し時期</th>
+                        <td class="py-4 px-6" data-i18n="td_delivery">
+                            決済完了後、即時にPay It Forwardチケット（食事提供権利）の購入手続きが完了します。<br>
                             当該権利に基づく食事提供は、イベント当日に現地にて実施されます。
                         </td>
                     </tr>
                     <tr>
-                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700">返品・キャンセル</th>
-                        <td class="py-4 px-6">
-                            本商品は、現地の方へ食事を提供する権利（Pay-forwardチケット）の販売となります。<br>
+                        <th class="py-4 px-6 bg-gray-100 font-bold text-gray-700" data-i18n="th_cancel">返品・キャンセル</th>
+                        <td class="py-4 px-6" data-i18n="td_cancel">
+                            本商品は、現地の方へ食事を提供する権利（Pay It Forwardチケット）の販売となります。<br>
                             商品の性質上、決済完了後のお客様都合によるキャンセル・返金はお受けしておりません。<br>
                             ただし、イベント中止等のやむを得ない事情により目的が達成されない場合は、別途対応方針をご案内いたします。
                         </td>
@@ -103,5 +121,82 @@
         <p class="text-xs text-gray-400">&copy; 2025 UZUSHIO Holdings / UZU PH Enterprises Inc.</p>
     </footer>
 
+    <script>
+        const translations = {
+            ja: {
+                back_top: "トップページへ戻る",
+                page_title: "特定商取引法に基づく表記",
+                th_distributor: "販売業者",
+                td_distributor: "UZUSHIO ホールディングス株式会社<br><span class=\"text-xs text-gray-500\">(UZUSHIO Holdings Co., Ltd.)</span>",
+                th_manager: "運営統括責任者",
+                td_manager: "中村 慎吾",
+                th_address: "所在地",
+                td_address: "〒594-0071<br>大阪府和泉市府中町1-5-13",
+                th_phone: "電話番号",
+                td_phone: "請求があり次第提供致しますので、上記メールアドレスまでご連絡ください",
+                th_email: "メールアドレス",
+                th_price: "販売価格",
+                td_price: "各プロジェクトページの支援プラン毎に記載（日本円で税込表示）",
+                th_other_cost: "商品代金以外の必要料金",
+                td_other_cost: "・インターネット接続にかかる通信回線等の諸費用<br>・銀行振込時の振込手数料<br>・暗号資産送付時のネットワーク手数料（ガス代）",
+                th_payment: "支払方法",
+                td_payment: "・クレジットカード決済（VISA, MasterCard, JCB, AMEX 等）<br>・銀行振込<br>・暗号資産（仮想通貨）送付",
+                th_timing: "支払時期",
+                td_timing: "【クレジットカード】ご利用のカード会社ごとに異なります。<br>【銀行振込・暗号資産】お申し込みから原則として7日以内にお手続きください。",
+                th_delivery: "引渡し時期",
+                td_delivery: "決済完了後、即時にPay It Forwardチケット（食事提供権利）の購入手続きが完了します。<br>当該権利に基づく食事提供は、イベント当日に現地にて実施されます。",
+                th_cancel: "返品・キャンセル",
+                td_cancel: "本商品は、現地の方へ食事を提供する権利（Pay It Forwardチケット）の販売となります。<br>商品の性質上、決済完了後のお客様都合によるキャンセル・返金はお受けしておりません。<br>ただし、イベント中止等のやむを得ない事情により目的が達成されない場合は、別途対応方針をご案内いたします。"
+            },
+            en: {
+                back_top: "Back to Top",
+                page_title: "Notation based on the Specified Commercial Transactions Act",
+                th_distributor: "Distributor",
+                td_distributor: "UZUSHIO Holdings Co., Ltd.",
+                th_manager: "Operations Manager",
+                td_manager: "Shingo Nakamura",
+                th_address: "Address",
+                td_address: "1-5-13 Fuchucho, Izumi City, Osaka 594-0071, Japan",
+                th_phone: "Phone Number",
+                td_phone: "We will disclose this without delay upon request. Please contact us at the email address above.",
+                th_email: "Email Address",
+                th_price: "Selling Price",
+                td_price: "Stated in each support plan on the project page (Displayed in Japanese Yen, tax included)",
+                th_other_cost: "Charges other than product price",
+                td_other_cost: "- Communication charges for internet connection<br>- Bank transfer fees<br>- Network fees (gas) for crypto transfer",
+                th_payment: "Payment Method",
+                td_payment: "- Credit Card (VISA, MasterCard, JCB, AMEX, etc.)<br>- Bank Transfer<br>- Crypto Asset Transfer",
+                th_timing: "Payment Timing",
+                td_timing: "[Credit Card] Varies by card company.<br>[Bank/Crypto] Please pay within 7 days of application.",
+                th_delivery: "Delivery Time",
+                td_delivery: "Purchase of Pay It Forward Ticket (right to provide meals) is completed immediately after payment.<br>Meal provision based on the right will be executed locally on the event day.",
+                th_cancel: "Returns and Cancellations",
+                td_cancel: "This product is the sale of the right (Pay It Forward Ticket) to provide meals to local people.<br>Due to the nature of the product, we do not accept cancellations or refunds for personal reasons after payment is completed.<br>However, if the purpose is not achieved due to unavoidable circumstances such as event cancellation, we will inform you of the response policy separately."
+            }
+        };
+
+        let currentLang = 'ja';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            updateContent();
+            updateButtonLabel();
+        }
+
+        function updateButtonLabel() {
+            const label = document.getElementById('lang-label');
+            label.textContent = currentLang === 'ja' ? 'English' : '日本語';
+        }
+
+        function updateContent() {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    element.innerHTML = translations[currentLang][key];
+                }
+            });
+        }
+    </script>
 </body>
 </html>

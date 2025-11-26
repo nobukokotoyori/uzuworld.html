@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -30,73 +30,83 @@
     <header class="bg-uzu-blue text-white p-4 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="font-bold text-lg">UZUSHIO Holdings 株式会社</h1>
-            <a href="index.html" class="text-sm hover:text-gray-300 underline">トップページへ戻る</a>
+            <div class="flex items-center gap-4">
+                <!-- 言語切り替えボタン -->
+                <button onclick="toggleLanguage()" class="flex items-center gap-1 text-white hover:text-gray-300 transition text-xs md:text-sm border border-white/30 px-2 py-1 rounded-full bg-white/10">
+                    <i class="fas fa-globe"></i>
+                    <span id="lang-label">English</span>
+                </button>
+                <a href="index.html" class="text-sm hover:text-gray-300 underline" data-i18n="back_top">トップページへ戻る</a>
+            </div>
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-12 max-w-3xl">
-        <h2 class="text-3xl font-bold text-uzu-blue mb-8 border-b-2 border-uzu-blue pb-4">プライバシーポリシー</h2>
+        <h2 class="text-3xl font-bold text-uzu-blue mb-8 border-b-2 border-uzu-blue pb-4" data-i18n="page_title">プライバシーポリシー</h2>
 
         <div class="bg-white shadow p-8 rounded-lg space-y-8 leading-relaxed">
-            <p>
+            <p data-i18n="preamble">
                 UZUSHIO Holdings株式会社（以下、「当社」といいます。）は、本ウェブサイト上で提供するサービス（以下、「本サービス」といいます。）における、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。
             </p>
 
             <section>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">第1条（個人情報）</h3>
-                <p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="article1_title">第1条（個人情報）</h3>
+                <p data-i18n="article1_content">
                     「個人情報」とは、個人情報保護法にいう「個人情報」を指すものとし、生存する個人に関する情報であって、当該情報に含まれる氏名、生年月日、住所、電話番号、連絡先その他の記述等により特定の個人を識別できる情報及び容貌、指紋、声紋にかかるデータ、及び健康保険証の保険者番号などの当該情報単体から特定の個人を識別できる情報（個人識別情報）を指します。
                 </p>
             </section>
 
             <section>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">第2条（個人情報の収集方法）</h3>
-                <p>
-                    当社は、ユーザーが利用登録や支援申し込みをする際に氏名、住所、電話番号、メールアドレス、クレジットカード番号などの個人情報をお尋ねすることがあります。
+                <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="article2_title">第2条（個人情報の収集方法）</h3>
+                <p data-i18n="article2_content">
+                    当社は、ユーザーが利用登録や支援申し込みをする際に氏名、住所、電話番号、メールアドレス、クレジットカード番号、銀行口座情報（振込名義人など）、暗号資産取引情報（トランザクションIDなど）などの個人情報をお尋ねすることがあります。
                 </p>
             </section>
 
             <section>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">第3条（個人情報を収集・利用する目的）</h3>
-                <p>当社が個人情報を収集・利用する目的は、以下のとおりです。</p>
-                <ul class="list-disc pl-5 mt-2 space-y-1">
-                    <li>当社サービスの提供・運営のため</li>
-                    <li>ユーザーからのお問い合わせに回答するため（本人確認を行うことを含む）</li>
-                    <li>イベントの実施報告や活動状況のご連絡のため</li>
-                    <li>重要なお知らせなど必要に応じたご連絡のため</li>
-                    <li>上記の利用目的に付随する目的</li>
-                </ul>
+                <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="article3_title">第3条（個人情報を収集・利用する目的）</h3>
+                <p data-i18n="article3_lead">当社が個人情報を収集・利用する目的は、以下のとおりです。</p>
+                <div data-i18n="article3_list">
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li>当社サービスの提供・運営のため</li>
+                        <li>ユーザーからのお問い合わせに回答するため（本人確認を行うことを含む）</li>
+                        <li>イベントの実施報告や活動状況のご連絡のため</li>
+                        <li>重要なお知らせなど必要に応じたご連絡のため</li>
+                        <li>上記の利用目的に付随する目的</li>
+                    </ul>
+                </div>
             </section>
 
             <section>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">第4条（利用目的の変更）</h3>
-                <p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="article4_title">第4条（利用目的の変更）</h3>
+                <p data-i18n="article4_content">
                     当社は、利用目的が変更前と関連性を有すると合理的に認められる場合に限り、個人情報の利用目的を変更するものとします。変更を行った場合には、変更後の目的について、本ウェブサイト上に公表するものとします。
                 </p>
             </section>
 
             <section>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">第5条（個人情報の第三者提供）</h3>
-                <p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="article5_title">第5条（個人情報の第三者提供）</h3>
+                <p data-i18n="article5_content">
                     当社は、次に掲げる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。ただし、個人情報保護法その他の法令で認められる場合を除きます。
                 </p>
-                <ul class="list-disc pl-5 mt-2 space-y-1">
-                    <li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難であるとき</li>
-                    <li>公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難であるとき</li>
-                    <li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがあるとき</li>
-                </ul>
+                <div data-i18n="article5_list">
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難であるとき</li>
+                        <li>公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難であるとき</li>
+                        <li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがあるとき</li>
+                    </ul>
+                </div>
             </section>
 
             <section>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">第6条（お問い合わせ窓口）</h3>
-                <p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3" data-i18n="article6_title">第6条（お問い合わせ窓口）</h3>
+                <p data-i18n="article6_content">
                     本ポリシーに関するお問い合わせは、下記の窓口までお願いいたします。
                 </p>
-                <div class="bg-gray-100 p-4 mt-4 rounded border border-gray-200">
+                <div class="bg-gray-100 p-4 mt-4 rounded border border-gray-200" data-i18n="article6_contact">
                     <p>住所：〒594-0071 大阪府和泉市府中町1-5-13</p>
                     <p>社名：UZUSHIO Holdings 株式会社</p>
                     <p>代表者：中村 慎吾</p>
-                    <!-- 黒色に変更 -->
                     <p>Eメールアドレス：info@uzushio-holdings.com</p>
                 </div>
             </section>
@@ -108,5 +118,72 @@
         <p class="text-xs text-gray-400">&copy; 2025 UZUSHIO Holdings / UZU PH Enterprises Inc.</p>
     </footer>
 
+    <script>
+        const translations = {
+            ja: {
+                back_top: "トップページへ戻る",
+                page_title: "プライバシーポリシー",
+                preamble: "UZUSHIO Holdings株式会社（以下、「当社」といいます。）は、本ウェブサイト上で提供するサービス（以下、「本サービス」といいます。）における、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。",
+                article1_title: "第1条（個人情報）",
+                article1_content: "「個人情報」とは、個人情報保護法にいう「個人情報」を指すものとし、生存する個人に関する情報であって、当該情報に含まれる氏名、生年月日、住所、電話番号、連絡先その他の記述等により特定の個人を識別できる情報及び容貌、指紋、声紋にかかるデータ、及び健康保険証の保険者番号などの当該情報単体から特定の個人を識別できる情報（個人識別情報）を指します。",
+                article2_title: "第2条（個人情報の収集方法）",
+                article2_content: "当社は、ユーザーが利用登録や支援申し込みをする際に氏名、住所、電話番号、メールアドレス、クレジットカード番号、銀行口座情報（振込名義人など）、暗号資産取引情報（トランザクションIDなど）などの個人情報をお尋ねすることがあります。",
+                article3_title: "第3条（個人情報を収集・利用する目的）",
+                article3_lead: "当社が個人情報を収集・利用する目的は、以下のとおりです。",
+                article3_list: "<ul class=\"list-disc pl-5 mt-2 space-y-1\"><li>当社サービスの提供・運営のため</li><li>ユーザーからのお問い合わせに回答するため（本人確認を行うことを含む）</li><li>イベントの実施報告や活動状況のご連絡のため</li><li>重要なお知らせなど必要に応じたご連絡のため</li><li>上記の利用目的に付随する目的</li></ul>",
+                article4_title: "第4条（利用目的の変更）",
+                article4_content: "当社は、利用目的が変更前と関連性を有すると合理的に認められる場合に限り、個人情報の利用目的を変更するものとします。変更を行った場合には、変更後の目的について、本ウェブサイト上に公表するものとします。",
+                article5_title: "第5条（個人情報の第三者提供）",
+                article5_content: "当社は、次に掲げる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。ただし、個人情報保護法その他の法令で認められる場合を除きます。",
+                article5_list: "<ul class=\"list-disc pl-5 mt-2 space-y-1\"><li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難であるとき</li><li>公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難であるとき</li><li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがあるとき</li></ul>",
+                article6_title: "第6条（お問い合わせ窓口）",
+                article6_content: "本ポリシーに関するお問い合わせは、下記の窓口までお願いいたします。",
+                article6_contact: "<p>住所：〒594-0071 大阪府和泉市府中町1-5-13</p><p>社名：UZUSHIO Holdings 株式会社</p><p>代表者：中村 慎吾</p><p>Eメールアドレス：info@uzushio-holdings.com</p>"
+            },
+            en: {
+                back_top: "Back to Top",
+                page_title: "Privacy Policy",
+                preamble: "UZUSHIO Holdings Co., Ltd. (hereinafter referred to as \"the Company\") establishes the Privacy Policy (hereinafter referred to as \"this Policy\") as follows regarding the handling of personal information of users in the services provided on this website (hereinafter referred to as \"the Services\").",
+                article1_title: "Article 1 (Personal Information)",
+                article1_content: "\"Personal information\" refers to \"personal information\" as defined in the Act on the Protection of Personal Information, and refers to information about a living individual that can identify the specific individual by name, date of birth, address, telephone number, contact information, and other descriptions contained in the information, as well as information that can identify a specific individual from such information alone, such as data related to appearance, fingerprints, voiceprints, and the insurer number of the health insurance card (personal identification information).",
+                article2_title: "Article 2 (Method of Collecting Personal Information)",
+                article2_content: "The Company may ask for personal information such as name, address, telephone number, email address, credit card number, bank account information (such as transfer name), and crypto asset transaction information (such as transaction ID) when users register for use or apply for support.",
+                article3_title: "Article 3 (Purpose of Collecting and Using Personal Information)",
+                article3_lead: "The purposes for which the Company collects and uses personal information are as follows:",
+                article3_list: "<ul class=\"list-disc pl-5 mt-2 space-y-1\"><li>For the provision and operation of our services</li><li>To respond to inquiries from users (including identity verification)</li><li>To report on event implementation and contact regarding activity status</li><li>To contact you as necessary, such as for important notices</li><li>Purposes incidental to the above purposes of use</li></ul>",
+                article4_title: "Article 4 (Change of Purpose of Use)",
+                article4_content: "The Company shall change the purpose of use of personal information only when it is reasonably recognized that the purpose of use is relevant to the purpose before the change. If a change is made, the changed purpose shall be announced on this website.",
+                article5_title: "Article 5 (Provision of Personal Information to Third Parties)",
+                article5_content: "The Company will not provide personal information to third parties without obtaining the user's consent in advance, except in the following cases. However, this excludes cases permitted by the Act on the Protection of Personal Information and other laws and regulations.",
+                article5_list: "<ul class=\"list-disc pl-5 mt-2 space-y-1\"><li>When it is necessary for the protection of human life, body, or property and it is difficult to obtain the consent of the person</li><li>When it is particularly necessary for improving public health or promoting the sound growth of children and it is difficult to obtain the consent of the person</li><li>When it is necessary to cooperate with a national agency, a local government, or a person entrusted by them in executing affairs prescribed by laws and regulations and obtaining the consent of the person is likely to hinder the execution of such affairs</li></ul>",
+                article6_title: "Article 6 (Contact for Inquiries)",
+                article6_content: "For inquiries regarding this policy, please contact the following window.",
+                article6_contact: "<p>Address: 1-5-13 Fuchucho, Izumi City, Osaka 594-0071, Japan</p><p>Company Name: UZUSHIO Holdings Co., Ltd.</p><p>Representative: Shingo Nakamura</p><p>Email Address: info@uzushio-holdings.com</p>"
+            }
+        };
+
+        let currentLang = 'ja';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            updateContent();
+            updateButtonLabel();
+        }
+
+        function updateButtonLabel() {
+            const label = document.getElementById('lang-label');
+            label.textContent = currentLang === 'ja' ? 'English' : '日本語';
+        }
+
+        function updateContent() {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    element.innerHTML = translations[currentLang][key];
+                }
+            });
+        }
+    </script>
 </body>
 </html>

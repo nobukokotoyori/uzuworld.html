@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pay-forwardチケット購入のお手続き | すた丼Pay-forwardクリスマス2025</title>
+    <title>送金完了のご報告 | すた丼Pay It Forwardクリスマス2025</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -15,11 +15,9 @@
                         'uzu-blue': '#0a1f4d',
                         'uzu-light': '#eef2ff',
                         'xmas-red': '#c41e3a',
-                        'xmas-gold': '#d4af37',
                     },
                     fontFamily: {
                         sans: ['"Noto Sans JP"', 'sans-serif'],
-                        oswald: ['"Oswald"', 'sans-serif'],
                     }
                 }
             }
@@ -35,267 +33,119 @@
                 UZUSHIO<span class="font-normal ml-1 text-xs">Holdings</span> × UZU PH
             </div>
             <div class="flex items-center gap-3">
-                <button onclick="toggleLanguage()" class="flex items-center gap-1 text-white hover:text-xmas-gold transition text-xs md:text-sm border border-white/30 px-2 py-1 rounded-full bg-white/10 backdrop-blur-sm">
+                <button onclick="toggleLanguage()" class="flex items-center gap-1 text-white hover:text-gray-300 transition text-xs md:text-sm border border-white/30 px-2 py-1 rounded-full bg-white/10 backdrop-blur-sm">
                     <i class="fas fa-globe"></i>
                     <span id="lang-label">English</span>
                 </button>
-                <a href="index.html" class="text-sm hover:text-xmas-gold transition flex items-center gap-1">
-                    <i class="fas fa-arrow-left"></i> <span data-i18n="back_top">トップへ戻る</span>
+                <a href="payment.html" class="text-sm hover:text-gray-300 transition flex items-center gap-1">
+                    <i class="fas fa-arrow-left"></i> <span data-i18n="back">戻る</span>
                 </a>
             </div>
         </div>
     </header>
 
     <main class="pt-24 pb-16 px-4">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-10">
-                <h1 class="text-2xl md:text-3xl font-bold text-uzu-blue mb-2" data-i18n="page_title">Pay-forwardチケット購入のお手続き</h1>
-                <p class="text-gray-600 text-sm" data-i18n="page_subtitle">セブ島へ「すた丼」のプレゼントを贈ります</p>
+        <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+            <div class="text-center mb-8">
+                <i class="fas fa-check-circle text-4xl text-green-500 mb-4"></i>
+                <h1 class="text-2xl font-bold text-uzu-blue" data-i18n="form_title">お支払い完了のご報告</h1>
+                <p class="text-sm text-gray-600 mt-2" data-i18n="form_desc">銀行振込または仮想通貨送金が完了しましたら、照合のため以下の情報をお知らせください。</p>
             </div>
 
-            <!-- STEP 1: 数量選択 -->
-            <section class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 border border-gray-100">
-                <h2 class="text-lg font-bold text-gray-800 mb-6 flex items-center">
-                    <span class="bg-uzu-blue text-white w-6 h-6 rounded-full flex items-center justify-center text-xs mr-3">1</span>
-                    <span data-i18n="step1_title">購入数を選ぶ</span>
-                </h2>
+            <!-- 
+                ★重要: Formspreeの設定★
+                以下の action="" の中に、FormspreeでコピーしたURLを貼り付けてください。
+                例: action="https://formspree.io/f/xmayqkqz"
+            -->
+            <form action="https://formspree.io/f/mldkgdpq" method="POST" class="space-y-6">
+                
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="label_name">お名前 <span class="text-red-500">*</span></label>
+                    <input type="text" name="name" required placeholder="山田 太郎" data-placeholder-ja="山田 太郎" data-placeholder-en="Taro Yamada" class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-uzu-blue outline-none">
+                </div>
 
-                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div class="flex-1">
-                        <p class="font-bold text-lg mb-1" data-i18n="item_name">Pay-forwardチケット</p>
-                        <p class="text-sm text-gray-500" data-i18n="item_desc">伝説のすた丼 1杯分相当</p>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="label_email">メールアドレス <span class="text-red-500">*</span></label>
+                    <input type="email" name="email" required placeholder="info@example.com" class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-uzu-blue outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="label_phone">電話番号 <span class="text-red-500">*</span></label>
+                    <input type="tel" name="phone" required placeholder="090-1234-5678" class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-uzu-blue outline-none">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="label_currency">決済方法 / 通貨 <span class="text-red-500">*</span></label>
+                        <select name="currency" required class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-uzu-blue outline-none">
+                            <option value="" data-i18n="select_default">選択してください</option>
+                            <option value="Bank Transfer (JPY)" data-i18n="opt_bank">銀行振込 (日本円)</option>
+                            <option value="Bitcoin (BTC)">Bitcoin (BTC)</option>
+                            <option value="Ethereum (ETH)">Ethereum (ETH)</option>
+                        </select>
                     </div>
-                    <div class="flex items-center gap-4">
-                        <button onclick="updateQuantity(-1)" class="w-10 h-10 rounded-full border border-gray-300 hover:bg-gray-100 text-xl font-bold text-gray-500">-</button>
-                        <div class="text-center">
-                            <input type="number" id="quantity" value="1" min="1" readonly class="w-16 text-center text-2xl font-bold border-none focus:ring-0">
-                            <span class="text-sm text-gray-500 block" data-i18n="unit">枚</span>
-                        </div>
-                        <button onclick="updateQuantity(1)" class="w-10 h-10 rounded-full border border-uzu-blue bg-uzu-blue text-white hover:bg-blue-900 text-xl font-bold">+</button>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="label_amount">振込・送金金額/数量 <span class="text-red-500">*</span></label>
+                        <input type="text" name="amount" required placeholder="例: 10000円 / 0.05 BTC" data-placeholder-ja="例: 10000円 / 0.05 BTC" data-placeholder-en="e.g. 10000 JPY / 0.05 BTC" class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-uzu-blue outline-none">
                     </div>
                 </div>
 
-                <div class="mt-6 pt-6 border-t border-dashed border-gray-200 flex justify-between items-end">
-                    <span class="font-bold text-gray-600" data-i18n="total_label">合計金額</span>
-                    <span class="text-3xl font-bold text-xmas-red font-oswald">
-                        ¥<span id="total-price">500</span>
-                    </span>
-                </div>
-            </section>
-
-            <!-- STEP 2: 決済方法 -->
-            <section class="bg-white rounded-xl shadow-lg p-6 md:p-8 border border-gray-100">
-                <h2 class="text-lg font-bold text-gray-800 mb-6 flex items-center">
-                    <span class="bg-uzu-blue text-white w-6 h-6 rounded-full flex items-center justify-center text-xs mr-3">2</span>
-                    <span data-i18n="step2_title">決済方法を選ぶ</span>
-                </h2>
-
-                <!-- タブ切り替え -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-                    <button onclick="selectMethod('bank')" id="btn-bank" class="payment-btn active flex flex-col items-center justify-center p-4 rounded-lg border-2 border-uzu-blue bg-blue-50 text-uzu-blue transition">
-                        <i class="fas fa-university text-2xl mb-2"></i>
-                        <span class="text-xs font-bold" data-i18n="btn_bank">銀行振込</span>
-                    </button>
-                    <button onclick="selectMethod('card')" id="btn-card" class="payment-btn flex flex-col items-center justify-center p-4 rounded-lg border-2 border-gray-200 hover:border-gray-300 text-gray-500 transition">
-                        <i class="fas fa-credit-card text-2xl mb-2"></i>
-                        <span class="text-xs font-bold" data-i18n="btn_card">カード決済</span>
-                    </button>
-                    <button onclick="selectMethod('btc')" id="btn-btc" class="payment-btn flex flex-col items-center justify-center p-4 rounded-lg border-2 border-gray-200 hover:border-gray-300 text-gray-500 transition">
-                        <i class="fab fa-bitcoin text-2xl mb-2 text-orange-500"></i>
-                        <span class="text-xs font-bold">Bitcoin</span>
-                    </button>
-                    <button onclick="selectMethod('eth')" id="btn-eth" class="payment-btn flex flex-col items-center justify-center p-4 rounded-lg border-2 border-gray-200 hover:border-gray-300 text-gray-500 transition">
-                        <i class="fab fa-ethereum text-2xl mb-2 text-indigo-500"></i>
-                        <span class="text-xs font-bold">Ethereum</span>
-                    </button>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="label_txid">振込名義 / TXID (ハッシュ) <span class="text-red-500">*</span></label>
+                    <input type="text" name="txid" required placeholder="振込名義人カナ または TXID" data-placeholder-ja="振込名義人カナ または TXID" data-placeholder-en="Payer Name or TXID" class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-uzu-blue outline-none font-mono text-sm">
+                    <p class="text-xs text-gray-500 mt-1" data-i18n="txid_note">※銀行振込の場合は「振込名義人」、仮想通貨の場合は「トランザクションID」をご入力ください。</p>
                 </div>
 
-                <!-- コンテンツ: 銀行振込 -->
-                <div id="content-bank" class="payment-content">
-                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                        <h3 class="text-lg font-bold text-gray-800 mb-4 text-center" data-i18n="bank_title">お振込先口座</h3>
-                        <div class="space-y-3 text-sm md:text-base">
-                            <div class="flex justify-between border-b border-gray-200 pb-2">
-                                <span class="text-gray-500" data-i18n="bank_name_label">銀行名</span>
-                                <span class="font-bold text-gray-800" data-i18n="bank_name_val">南都銀行</span>
-                            </div>
-                            <div class="flex justify-between border-b border-gray-200 pb-2">
-                                <span class="text-gray-500" data-i18n="bank_branch_label">支店名</span>
-                                <span class="font-bold text-gray-800" data-i18n="bank_branch_val">和泉支店</span>
-                            </div>
-                            <div class="flex justify-between border-b border-gray-200 pb-2">
-                                <span class="text-gray-500" data-i18n="bank_type_label">口座種別</span>
-                                <span class="font-bold text-gray-800" data-i18n="bank_type_val">普通</span>
-                            </div>
-                            <div class="flex justify-between border-b border-gray-200 pb-2">
-                                <span class="text-gray-500" data-i18n="bank_num_label">口座番号</span>
-                                <span class="font-bold text-gray-800 font-mono">2040708</span>
-                            </div>
-                            <div class="flex justify-between pb-2">
-                                <span class="text-gray-500" data-i18n="bank_account_label">口座名義</span>
-                                <span class="font-bold text-gray-800 text-right" data-i18n="bank_account_val">ウズシオホールディングス（カ</span>
-                            </div>
-                        </div>
-                        <p class="text-xs text-red-500 mt-4" data-i18n="bank_note">※振込手数料はお客様のご負担となります。<br>※お振込後、必ず以下のボタンからご連絡ください。</p>
-                    </div>
-                    
-                    <a href="crypto_form.html" class="block w-full mt-6 bg-uzu-blue hover:bg-blue-900 text-white font-bold py-4 rounded-lg shadow-lg transition text-center">
-                        <i class="fas fa-paper-plane mr-2"></i><span data-i18n="btn_report_bank">振込完了を通知する（フォームへ）</span>
-                    </a>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="label_message">メッセージ（任意）</label>
+                    <textarea name="message" rows="3" placeholder="応援メッセージなどあればご記入ください" data-placeholder-ja="応援メッセージなどあればご記入ください" data-placeholder-en="Please write any cheering messages" class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-uzu-blue outline-none"></textarea>
                 </div>
 
-                <!-- コンテンツ: カード決済 -->
-                <div id="content-card" class="payment-content hidden">
-                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-6">
-                        <p class="text-sm text-uzu-blue font-bold">
-                            <i class="fas fa-info-circle mr-1"></i>
-                            <span data-i18n="card_note_title">決済は安全な外部サイト（Stripe）で行われます</span>
-                        </p>
-                        <p class="text-xs text-gray-600 mt-1" data-i18n="card_note_desc">
-                            「カードで支払う」ボタンを押すと、決済画面へ移動します。<br>
-                            移動先の画面で、再度数量を確認・変更することができます。
-                        </p>
-                    </div>
-                    <button onclick="proceedToCardPayment()" class="w-full bg-xmas-red hover:bg-red-700 text-white font-bold py-4 rounded-lg shadow-lg transition transform hover:scale-[1.02]">
-                        <i class="fas fa-credit-card mr-2"></i><span data-i18n="pay_with_card">カードで支払う</span>
-                    </button>
-                </div>
+                <button type="submit" class="w-full bg-uzu-blue hover:bg-blue-900 text-white font-bold py-4 rounded-lg shadow-lg transition transform hover:scale-[1.01]">
+                    <span data-i18n="btn_submit">報告を送信する</span>
+                </button>
 
-                <!-- コンテンツ: 仮想通貨 (BTC, ETH) -->
-                <div id="content-crypto" class="payment-content hidden">
-                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center">
-                        <div id="crypto-icon" class="text-5xl mb-4"></div>
-                        <h3 id="crypto-name" class="text-xl font-bold mb-2"></h3>
-                        <p class="text-sm text-gray-600 mb-6" data-i18n="crypto_desc">以下のQRコードまたはアドレスへ送金してください。</p>
-                        
-                        <!-- QR 表示エリア (ID付与) -->
-                        <div id="qr-container" class="bg-white w-48 h-48 mx-auto mb-6 border-4 border-gray-800 flex items-center justify-center relative overflow-hidden">
-                            <!-- 初期表示はアイコン -->
-                            <i class="fas fa-qrcode text-6xl text-gray-300"></i>
-                            <span class="absolute bottom-2 text-xs text-gray-400">Address QR Code</span>
-                        </div>
-
-                        <div class="bg-white p-3 rounded border border-gray-300 flex items-center justify-between gap-2 text-left">
-                            <code id="crypto-address" class="text-xs md:text-sm break-all font-mono text-gray-600">--</code>
-                            <button onclick="copyAddress()" class="text-uzu-blue hover:text-blue-700 px-2 tooltip" data-tip="Copy">
-                                <i class="far fa-copy"></i>
-                            </button>
-                        </div>
-
-                        <p class="text-xs text-red-500 mt-4 text-left" data-i18n="crypto_note">
-                            ※ネットワーク（Chain）を必ずご確認ください。<br>
-                            ※送金手数料はご負担をお願いいたします。
-                        </p>
-                    </div>
-                    
-                    <p class="text-center text-sm text-gray-500 mt-6 mb-2" data-i18n="crypto_after">送金が完了しましたら、以下のボタンからお知らせください。</p>
-                    <a href="crypto_form.html" class="block w-full bg-gray-800 hover:bg-black text-white font-bold py-4 rounded-lg shadow-lg transition text-center">
-                        <i class="fas fa-paper-plane mr-2"></i><span data-i18n="btn_report">送金完了を通知する（フォームへ）</span>
-                    </a>
-                </div>
-
-            </section>
+            </form>
         </div>
     </main>
 
     <footer class="bg-uzu-blue text-white text-center py-6 text-xs">
         <p>&copy; 2025 UZUSHIO Holdings / UZU PH Enterprises Inc.</p>
-        <div class="mt-2 flex justify-center gap-4">
-            <a href="tokusho.html" class="underline opacity-70 hover:opacity-100" data-i18n="footer_tokusho">特定商取引法に基づく表記</a>
-            <a href="privacy.html" class="underline opacity-70 hover:opacity-100" data-i18n="footer_privacy">プライバシーポリシー</a>
-        </div>
     </footer>
 
     <script>
-        const unitPrice = 500;
-        let quantity = 1;
-
-        /* URL設定 */
-        const STRIPE_LINK = "https://buy.stripe.com/test_example123"; 
-
-        /* 仮想通貨情報の設定 (QR画像パス追加) */
-        const CRYPTO_INFO = {
-            btc: { 
-                name: 'Bitcoin (BTC)', 
-                address: '33VcqkeRoX7steztRkppLUqFeE2tuA4pYW',
-                qr: 'btcqr.jpg' 
-            },
-            eth: { 
-                name: 'Ethereum (ETH)', 
-                address: '0xBB977D095B9672bE7A970b1bE6A7D776b2e43531',
-                qr: 'ethqr.jpg'
-            }
-        };
-
-        // 翻訳データ
         const translations = {
             ja: {
-                back_top: "トップへ戻る",
-                page_title: "Pay-forwardチケット購入のお手続き",
-                page_subtitle: "セブ島へ「すた丼」のプレゼントを贈ります",
-                step1_title: "購入数を選ぶ",
-                item_name: "Pay-forwardチケット",
-                item_desc: "伝説のすた丼 1杯分相当",
-                unit: "枚",
-                total_label: "合計金額",
-                step2_title: "決済方法を選ぶ",
-                btn_bank: "銀行振込",
-                btn_card: "カード決済",
-                bank_title: "お振込先口座",
-                bank_name_label: "銀行名",
-                bank_name_val: "南都銀行",
-                bank_branch_label: "支店名",
-                bank_branch_val: "和泉支店",
-                bank_type_label: "口座種別",
-                bank_type_val: "普通",
-                bank_num_label: "口座番号",
-                bank_account_label: "口座名義",
-                bank_account_val: "ウズシオホールディングス（カ",
-                bank_note: "※振込手数料はお客様のご負担となります。<br>※お振込後、必ず以下のボタンからご連絡ください。",
-                btn_report_bank: "振込完了を通知する（フォームへ）",
-                card_note_title: "決済は安全な外部サイト（Stripe）で行われます",
-                card_note_desc: "「カードで支払う」ボタンを押すと、決済画面へ移動します。<br>移動先の画面で、再度数量を確認・変更することができます。",
-                pay_with_card: "カードで支払う",
-                crypto_desc: "以下のQRコードまたはアドレスへ送金してください。",
-                crypto_note: "※ネットワーク（Chain）を必ずご確認ください。<br>※送金手数料はご負担をお願いいたします。",
-                crypto_after: "送金が完了しましたら、以下のボタンからお知らせください。",
-                btn_report: "送金完了を通知する（フォームへ）",
-                footer_tokusho: "特定商取引法に基づく表記",
-                footer_privacy: "プライバシーポリシー",
+                back: "戻る",
+                form_title: "お支払い完了のご報告",
+                form_desc: "銀行振込または仮想通貨送金が完了しましたら、照合のため以下の情報をお知らせください。",
+                label_name: "お名前 <span class=\"text-red-500\">*</span>",
+                label_email: "メールアドレス <span class=\"text-red-500\">*</span>",
+                label_phone: "電話番号 <span class=\"text-red-500\">*</span>",
+                label_currency: "決済方法 / 通貨 <span class=\"text-red-500\">*</span>",
+                select_default: "選択してください",
+                opt_bank: "銀行振込 (日本円)",
+                label_amount: "振込・送金金額/数量 <span class=\"text-red-500\">*</span>",
+                label_txid: "振込名義 / TXID (ハッシュ) <span class=\"text-red-500\">*</span>",
+                txid_note: "※銀行振込の場合は「振込名義人」、仮想通貨の場合は「トランザクションID」をご入力ください。",
+                label_message: "メッセージ（任意）",
+                btn_submit: "報告を送信する"
             },
             en: {
-                back_top: "Back to Top",
-                page_title: "Purchase Pay-forward Tickets",
-                page_subtitle: "Send a 'Sutadon' gift to Cebu Island",
-                step1_title: "Select Quantity",
-                item_name: "Pay-forward Ticket",
-                item_desc: "Equivalent to 1 bowl of Legendary Sutadon",
-                unit: "tickets",
-                total_label: "Total Amount",
-                step2_title: "Select Payment Method",
-                btn_bank: "Bank Transfer",
-                btn_card: "Credit Card",
-                bank_title: "Bank Account Information",
-                bank_name_label: "Bank Name",
-                bank_name_val: "Nanto Bank",
-                bank_branch_label: "Branch",
-                bank_branch_val: "Izumi Branch",
-                bank_type_label: "Type",
-                bank_type_val: "Ordinary (Savings)",
-                bank_num_label: "Number",
-                bank_account_label: "Name",
-                bank_account_val: "UZUSHIO HOLDINGS CO., LTD.",
-                bank_note: "*Please bear the transfer fee.<br>*Please notify us via the button below after transfer.",
-                btn_report_bank: "Report Transfer Completion (Form)",
-                card_note_title: "Payment is processed securely via Stripe",
-                card_note_desc: "Clicking 'Pay with Card' will redirect you to the payment screen.<br>You can confirm or change the quantity again on the payment screen.",
-                pay_with_card: "Pay with Card",
-                crypto_desc: "Please send funds to the QR code or address below.",
-                crypto_note: "*Please be sure to check the network (Chain).<br>*Please bear the transaction fee.",
-                crypto_after: "Once the remittance is complete, please notify us via the button below.",
-                btn_report: "Report Remittance Completion (Form)",
-                footer_tokusho: "Notation based on the Specified Commercial Transactions Act",
-                footer_privacy: "Privacy Policy",
+                back: "Back",
+                form_title: "Report Payment Completion",
+                form_desc: "Please provide the following information for verification after bank transfer or crypto remittance is complete.",
+                label_name: "Name <span class=\"text-red-500\">*</span>",
+                label_email: "Email <span class=\"text-red-500\">*</span>",
+                label_phone: "Phone Number <span class=\"text-red-500\">*</span>",
+                label_currency: "Payment Method / Currency <span class=\"text-red-500\">*</span>",
+                select_default: "Please select",
+                opt_bank: "Bank Transfer (JPY)",
+                label_amount: "Amount Sent <span class=\"text-red-500\">*</span>",
+                label_txid: "Payer Name / TXID (Hash) <span class=\"text-red-500\">*</span>",
+                txid_note: "*Enter 'Payer Name' for bank transfer, or 'Transaction ID' for crypto.",
+                label_message: "Message (Optional)",
+                btn_submit: "Send Report"
             }
         };
 
@@ -313,6 +163,7 @@
         }
 
         function updateContent() {
+            // テキスト書き換え
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(element => {
                 const key = element.getAttribute('data-i18n');
@@ -320,81 +171,15 @@
                     element.innerHTML = translations[currentLang][key];
                 }
             });
-        }
 
-        function updateQuantity(change) {
-            const newQuantity = quantity + change;
-            if (newQuantity >= 1) {
-                quantity = newQuantity;
-                document.getElementById('quantity').value = quantity;
-                document.getElementById('total-price').innerText = (quantity * unitPrice).toLocaleString();
-            }
-        }
-
-        function selectMethod(method) {
-            document.querySelectorAll('.payment-btn').forEach(btn => {
-                btn.classList.remove('border-uzu-blue', 'bg-blue-50', 'text-uzu-blue');
-                btn.classList.add('border-gray-200', 'text-gray-500');
+            // プレースホルダー書き換え
+            const inputs = document.querySelectorAll('[data-placeholder-ja]');
+            inputs.forEach(input => {
+                const text = currentLang === 'ja' 
+                    ? input.getAttribute('data-placeholder-ja') 
+                    : input.getAttribute('data-placeholder-en');
+                input.placeholder = text;
             });
-
-            const activeBtn = document.getElementById(`btn-${method}`);
-            activeBtn.classList.remove('border-gray-200', 'text-gray-500');
-            activeBtn.classList.add('border-uzu-blue', 'bg-blue-50', 'text-uzu-blue');
-
-            // Hide all contents first
-            document.getElementById('content-bank').classList.add('hidden');
-            document.getElementById('content-card').classList.add('hidden');
-            document.getElementById('content-crypto').classList.add('hidden');
-
-            if (method === 'bank') {
-                document.getElementById('content-bank').classList.remove('hidden');
-            } else if (method === 'card') {
-                document.getElementById('content-card').classList.remove('hidden');
-            } else {
-                document.getElementById('content-crypto').classList.remove('hidden');
-                setupCrypto(method);
-            }
-        }
-
-        function setupCrypto(type) {
-            const data = CRYPTO_INFO[type];
-            const iconEl = document.getElementById('crypto-icon');
-            const nameEl = document.getElementById('crypto-name');
-            const addrEl = document.getElementById('crypto-address');
-            const qrContainer = document.getElementById('qr-container'); // コンテナを取得
-
-            // アイコンと名前の設定
-            if (type === 'btc') {
-                iconEl.innerHTML = '<i class="fab fa-bitcoin text-orange-500"></i>';
-            } else if (type === 'eth') {
-                iconEl.innerHTML = '<i class="fab fa-ethereum text-indigo-500"></i>';
-            }
-
-            nameEl.innerText = data.name;
-            addrEl.innerText = data.address;
-
-            // QRコード画像の設定
-            if (data.qr) {
-                // 画像があればimgタグを挿入
-                qrContainer.innerHTML = `<img src="${data.qr}" alt="${data.name} QR Code" class="w-full h-full object-contain">`;
-            } else {
-                // なければデフォルトのアイコン表示
-                qrContainer.innerHTML = `
-                    <i class="fas fa-qrcode text-6xl text-gray-300"></i>
-                    <span class="absolute bottom-2 text-xs text-gray-400">Address QR Code</span>
-                `;
-            }
-        }
-
-        function copyAddress() {
-            const address = document.getElementById('crypto-address').innerText;
-            navigator.clipboard.writeText(address).then(() => {
-                alert('アドレスをコピーしました');
-            });
-        }
-
-        function proceedToCardPayment() {
-            window.location.href = STRIPE_LINK;
         }
     </script>
 </body>
