@@ -93,7 +93,7 @@
             <!-- 右側エリア：言語切り替え & CTA -->
             <div class="flex items-center gap-3 md:gap-4">
                 <!-- 言語切り替えボタン -->
-                <button type="button" onclick="toggleLanguage()" class="flex items-center gap-1 text-white hover:text-xmas-gold transition text-sm md:text-base border border-white/30 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm cursor-pointer z-50">
+                <button type="button" onclick="window.toggleLanguage()" class="flex items-center gap-1 text-white hover:text-xmas-gold transition text-sm md:text-base border border-white/30 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm cursor-pointer z-50">
                     <i class="fas fa-globe"></i>
                     <span id="lang-label">English</span>
                 </button>
@@ -423,9 +423,9 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative mb-12">
                 <!-- PC用: 矢印 (SVG 線画・右向き) -->
                 <div class="hidden md:block absolute top-1/2 left-1/3 transform -translate-y-1/2 -translate-x-1/2 text-4xl text-xmas-gold z-0">
-                    <!-- 線画のジェット機 (右向き) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 text-xmas-gold transform rotate-90">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    <!-- 修正: 線画のジェット機SVG (右向き) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 text-xmas-gold transform rotate-90">
+                        <path d="M2 12h19.8m-6.8-7 7 7-7 7M12 7l-4-4-5 2 3 9-3 9 5 2 4-4" />
                     </svg>
                 </div>
                 <div class="hidden md:block absolute top-1/2 right-1/3 transform -translate-y-1/2 translate-x-1/2 text-4xl text-xmas-gold z-0">
@@ -443,10 +443,10 @@
                     <p class="text-sm text-gray-500" data-i18n="pay_step1_desc">あなたの500円</p>
                 </div>
 
-                <!-- スマホ用: 飛行機 (SVG 線画) -->
+                <!-- スマホ用: 飛行機 (SVG 線画・下向き) -->
                 <div class="md:hidden text-center text-4xl text-xmas-gold -my-4 z-0 flex justify-center">
                     <!-- ジェット機シルエットSVG (下向き) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 text-xmas-gold transform rotate-180">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 text-xmas-gold transform rotate-180">
                         <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                     </svg>
                 </div>
@@ -510,7 +510,7 @@
                             Megaworld は、フィリピン証券取引所（PSE: MEG）に上場する国内最大級の不動産デベロッパーであり、これまでに国内外で800棟以上の住宅建物、150万㎡超のオフィススペース、50万㎡超の商業施設、5,000室以上のホテルを開発・運営してきた実績を持ちます。
                             総資産は約4,700億フィリピンペソ（約1兆2,000億円相当）にのぼり、強固な財務基盤と透明性の高い企業統治で知られています。
                         </p>
-                        <!-- 修正: 指定された文章を削除 -->
+                        <!-- 指定された文章を削除 -->
                         <p class="text-white font-normal py-4 border-y border-white/10 bg-white/5 mx-auto max-w-2xl mt-6" data-i18n="venue_desc_4">
                             その格式の高さから、<strong class="text-white border-b border-xmas-gold pb-0.5">2026年「ASEAN首脳会議」の会場</strong>にも選定された特別な場所です。
                         </p>
@@ -540,7 +540,7 @@
                 <div class="p-6 md:p-10">
                     <dl class="grid grid-cols-1 md:grid-cols-3 gap-y-6 gap-x-4 text-sm md:text-base border-b border-gray-100 pb-6">
                         <dt class="font-bold text-gray-500" data-i18n="outline_dt_1">日時</dt>
-                        <dd class="md:col-span-2 font-bold text-gray-900 text-lg" data-i18n="outline_dd_1">2025年12月20日（土）＆ 12月21日（日）<br><span class="text-sm font-normal text-gray-600">各日 15:00〜17:00</span></dd>
+                        <dd class="md:col-span-2 font-bold text-gray-900 text-lg" data-i18n="outline_dd_1">2025年12月20日（土）＆ 12月21日（日）<br><span class="text-sm font-normal text-gray-600">各日 16:00〜21:00</span></dd>
 
                         <dt class="font-bold text-gray-500" data-i18n="outline_dt_2">場所</dt>
                         <dd class="md:col-span-2 text-gray-900">
@@ -720,7 +720,7 @@
                 venue_desc_5: "しかし、その素顔は驚くほど開放的でフレンドリー。<br>週末には地元の家族連れや子供たちの笑い声が響き渡る、誰もが安心して過ごせる温かいコミュニティでもあります。",
                 venue_desc_6: "世界が注目するこの地で、Humanitarian Economy促進の覚書（MOU）を締結した<br class=\"hidden md:inline\">強力なパートナーの全面協力のもと、本イベントは開催されます。",
                 outline_dt_1: "日時",
-                outline_dd_1: "2025年12月20日（土）＆ 12月21日（日）<br><span class=\"text-sm font-normal text-gray-600\">各日 15:00〜17:00</span>",
+                outline_dd_1: "2025年12月20日（土）＆ 12月21日（日）<br><span class=\"text-sm font-normal text-gray-600\">各日 16:00〜21:00</span>",
                 outline_dt_2: "場所",
                 outline_dt_2_val: "The Mactan New Town Boardwalk<br><span class=\"text-gray-500 text-xs font-sans\">(The Mactan Newtown, Lapu-Lapu City, Mactan Island, Cebu)</span>",
                 outline_dt_3: "Price",
@@ -824,15 +824,16 @@
 
         let currentLang = 'ja';
 
-        function toggleLanguage() {
+        // グローバル関数として定義
+        window.toggleLanguage = function() {
             currentLang = currentLang === 'ja' ? 'en' : 'ja';
             updateContent();
             updateButtonLabel();
-        }
+        };
 
         function updateButtonLabel() {
             const label = document.getElementById('lang-label');
-            label.textContent = currentLang === 'ja' ? 'English' : '日本語';
+            if(label) label.textContent = currentLang === 'ja' ? 'English' : '日本語';
         }
 
         function updateContent() {
