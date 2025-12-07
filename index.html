@@ -79,7 +79,6 @@
         <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-3 flex justify-between items-center">
             <!-- ロゴ -->
             <div class="flex items-center gap-2 md:gap-4">
-                <!-- 復元: スマホは flex-col (縦並び) -->
                 <div class="flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
                     <div class="text-white font-bold text-xs md:text-lg tracking-tighter border-2 border-white px-1.5 py-0.5 md:px-2 md:py-0.5 leading-tight">
                         UZUSHIO<span class="text-[10px] block font-normal md:inline md:ml-1">Holdings</span>
@@ -119,10 +118,12 @@
         </div>
 
         <!-- Section 1 Logo: Marine Foundation (Dark Blue ver) -->
+        <!-- 位置: FV 右上 -->
         <div class="absolute top-20 right-4 md:top-24 md:right-10 z-20 animate-fade-in-up" style="animation-delay: 0.5s;">
             <img src="marinedarkblue.jpg" 
                  alt="Marine Foundation Logo" 
-                 class="w-24 md:w-40 shadow-lg rounded bg-white p-1 opacity-90">
+                 class="w-24 md:w-40 shadow-lg rounded bg-white p-1 opacity-90"
+                 onerror="this.style.display='none'">
         </div>
 
         <div class="relative z-10 container mx-auto px-4 py-12 text-center flex flex-col items-center">
@@ -205,12 +206,14 @@
     <section class="bg-suta-bg py-16 md:py-24 px-4 relative overflow-hidden">
         <div class="absolute inset-0 bg-pattern pointer-events-none"></div>
         
-        <!-- 追加: Marine Foundation ロゴ (Gold) - Section 3右上 -->
+        <!-- Section 3 Logo: Marine Foundation (Gold) -->
+        <!-- 位置: Section 3 右上 -->
         <div class="absolute top-4 right-4 md:top-10 md:right-10 z-20">
             <img src="marinefgold.jpg" 
                  alt="Marine Foundation Gold Logo" 
                  class="w-10 md:w-[60px] opacity-90 mix-blend-multiply" 
-                 style="mix-blend-mode: multiply;">
+                 style="mix-blend-mode: multiply;"
+                 onerror="this.style.display='none'">
         </div>
 
         <div class="max-w-4xl mx-auto relative z-10">
@@ -273,7 +276,7 @@
                     <!-- 1枚目: 写真 (liloan.jpg) -->
                     <div class="rounded-lg overflow-hidden shadow-md bg-gray-100 relative group">
                         <!-- 高さを自動(w-full h-auto)にして文字切れを防ぐ -->
-                        <img src="liloan.jpg" alt="Liloan Relief Efforts" class="w-full h-auto object-contain transition duration-500 group-hover:scale-105">
+                        <img src="liloan.jpg" alt="Liloan Relief Efforts" class="w-full h-auto object-contain transition duration-500 group-hover:scale-105" onerror="this.style.display='none'">
                     </div>
                     
                     <!-- 2枚目: 写真 (support2.jpg) -->
@@ -303,6 +306,14 @@
         </div>
 
         <div class="max-w-3xl mx-auto text-center relative z-10">
+            
+            <!-- Section 4 Logo: Marine Foundation (New Blue) -->
+            <!-- 位置: Section 4 コンテンツエリア右上（絶対配置） -->
+            <img src="marinenewblue.jpg" 
+                 alt="Marine Foundation Logo" 
+                 class="absolute -top-6 right-0 md:-top-8 md:-right-10 w-10 md:w-[60px] object-contain border-none bg-transparent z-20"
+                 onerror="this.style.display='none'">
+
             <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight font-serif drop-shadow-lg">
                 <span data-i18n="vision_title_1">目に見える・目に見えない</span><br>
                 <span data-i18n="vision_title_2">日本の価値と共に衣食住を支援したい。</span><br>
@@ -368,10 +379,20 @@
     </section>
 
     <!-- 【Section 5】 なぜ「伝説のすた丼」なのか？ (Revised for History & Vision) -->
-    <section class="py-16 md:py-24 px-4 bg-white">
-        <div class="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
+    <!-- 修正: relativeクラスを追加し、ロゴをセクションの直下に絶対配置 -->
+    <section class="py-16 md:py-24 px-4 bg-white relative overflow-hidden">
+        <!-- 新規追加: Global Samurai Logo (セクションの右上に絶対配置 - Marineロゴと同様のスタイル) -->
+        <div class="absolute top-4 right-4 md:top-10 md:right-10 z-20">
+            <img src="globalsamurai.jpg" 
+                 alt="Global Samurai Logo" 
+                 class="w-10 md:w-[60px] object-contain border-none bg-transparent"
+                 onerror="this.style.display='none'">
+        </div>
+
+        <div class="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12 relative z-10">
+            <!-- Left Column: Text -->
             <div class="md:w-1/2 text-center md:text-left">
-                <!-- タイトル変更 -->
+                <!-- タイトル -->
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 leading-tight">
                     <span data-i18n="history_title">伝説のすた丼屋：創業からの魂と、世界への挑戦</span>
                 </h2>
@@ -417,6 +438,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Right Column: Image -->
             <div class="md:w-1/2">
                 <div class="relative group">
                     <div class="absolute inset-0 bg-xmas-gold rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition duration-500"></div>
@@ -438,12 +461,9 @@
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative mb-12">
-                <!-- PC用: 矢印 (SVG 線画・右向き) -->
-                <div class="hidden md:block absolute top-1/2 left-1/3 transform -translate-y-1/2 -translate-x-1/2 text-4xl text-xmas-gold z-0">
-                    <!-- 修正: 線画のジェット機SVG (右向き) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 text-xmas-gold transform rotate-90">
-                        <path d="M2 12h19.8m-6.8-7 7 7-7 7M12 7l-4-4-5 2 3 9-3 9 5 2 4-4" />
-                    </svg>
+                <!-- PC用: 矢印 (Font Awesome: fa-plane, rotate-90 = 右向き) -->
+                <div class="hidden md:block absolute top-1/2 left-1/3 transform -translate-y-1/2 -translate-x-1/2 z-0">
+                    <i class="fas fa-plane text-4xl text-xmas-gold transform rotate-90"></i>
                 </div>
                 <div class="hidden md:block absolute top-1/2 right-1/3 transform -translate-y-1/2 translate-x-1/2 text-4xl text-xmas-gold z-0">
                     <!-- SVG Heart (Right) -->
@@ -460,12 +480,9 @@
                     <p class="text-sm text-gray-500" data-i18n="pay_step1_desc">あなたの500円</p>
                 </div>
 
-                <!-- 修正: スマホ用 飛行機アイコン (SVG線画・下向き) -->
-                <div class="md:hidden text-center text-4xl text-xmas-gold -my-4 z-0 flex justify-center">
-                    <!-- ジェット機シルエットSVG (下向き) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 text-xmas-gold transform rotate-180">
-                        <path d="M2 12h19.8m-6.8-7 7 7-7 7M12 7l-4-4-5 2 3 9-3 9 5 2 4-4" />
-                    </svg>
+                <!-- スマホ用: 飛行機 (Font Awesome: fa-plane, rotate-180 = 下向き) -->
+                <div class="md:hidden text-center text-xmas-gold -my-4 z-0 flex justify-center">
+                    <i class="fas fa-plane text-4xl transform rotate-180"></i>
                 </div>
 
                 <!-- Step 2 -->
@@ -739,90 +756,6 @@
                 outline_dt_1: "日時",
                 outline_dd_1: "2025年12月20日（土）＆ 12月21日（日）<br><span class=\"text-sm font-normal text-gray-600\">各日 16:00〜21:00</span>",
                 outline_dt_2: "場所",
-                outline_dt_2_val: "The Mactan New Town Boardwalk<br><span class=\"text-gray-500 text-xs font-sans\">(The Mactan Newtown, Lapu-Lapu City, Mactan Island, Cebu)</span>",
-                outline_dt_3: "Price",
-                outline_dd_3_1: "Pay It Forward 1 bowl worth 500 yen",
-                outline_dd_3_2: "*Covered by everyone's support",
-                outline_goal: "The goal is to deliver energizing meals to as many people as possible.",
-                outline_help: "To do that, the power of everyone in Japan is essential.",
-                close_title_1: "May this base of hope overflow with smiles.",
-                close_title_2: "We are waiting for your warm support.",
-                close_p: "If this SUTADONYA container restaurant starts full-scale operation in January next year, we can support their lives in a more sustainable way. This Christmas project is an important bridge to that future.<br><br>Put Japan's hot cheers on hot Sutadon.<br>Let's give unforgettable Christmas smiles to children and families in Cebu Island together.",
-                close_btn_main: "Agree with this feeling and give Sutadon for Christmas",
-                close_btn_sub: "(Available for purchase from 500 yen per ticket)",
-                footer_tokusho: "Notation based on the Specified Commercial Transactions Act",
-                footer_privacy: "Privacy Policy",
-            },
-            en: {
-                header_cta: "Send Energy Now",
-                fv_badge: "Japan-Philippines Joint Project | Special Christmas Event",
-                fv_title_1: "This Christmas,",
-                fv_title_2: "Send a ",
-                fv_title_3: "Warm Gift",
-                fv_title_4: " to Cebu.",
-                fv_subtitle: "Your 500 yen becomes 'Japanese Energy' that lights up the future.",
-                fv_desc: "To the people of Cebu, Philippines, facing difficulties.<br>A Pay It Forward project by UZUSHIO Holdings and UZU PH<br class=\"hidden md:block\">to deliver smiles with the legendary Sutadon.",
-                fv_cta: "Send Vitality to Cebu Now",
-                fv_cta_sub: "(From 500 yen / Credit Card Accepted)",
-                msg_title_1: "Message from Cebu:",
-                msg_title_2: "Now, a hearty meal becomes vitality for the future.",
-                msg_p1: "While Japan is filled with Christmas mood, many people in Cebu, Philippines, across the sea, are still living difficult lives due to the effects of earthquakes and floods that occurred this year.",
-                msg_p2: "However, they have never lost hope. For them, a nutritious and energizing meal is not just about filling their stomachs, but a great vitality to live for tomorrow.",
-                msg_p3: "This Christmas, why don't we send a hearty Sutadon meal along with our cheers from Japan?",
-                story_title_1: "To Deliver 'Hope for the Future'.",
-                story_title_2: "Collaborators from Japan and Philippines are moving now.",
-                story_img_cap: "SUTADONYA Container Restaurant Surroundings",
-                story_img_cap_2: "Image Design",
-                story_p1: "To promote humanitarian aid by spreading Japanese values to the world, UZUSHIO Holdings first proceeded with the establishment of a local subsidiary 'UZU PH Enterprises Inc.' with our Filipino colleagues.",
-                story_p2: "As a representative of Japanese food culture, we have been preparing the 'SUTADONYA Container Restaurant' at The Mactan Newtown in Cebu so that we can deliver 'Legendary Sutadon' anywhere in the Philippines.",
-                story_p3: "Aiming for full-scale operation in January 2026, this SUTADONYA Container Restaurant was supposed to be a new base of hope for Cebu. However, during the preparation, we learned that the local people were in a difficult situation, and as we went out to support them in a small way, it became an opportunity to think about what we could do.",
-                story_quote: "\"We want to give Sutadon Christmas presents to children who felt anxious due to natural disasters and those who were affected.\"",
-                story_p4: "We decided to implement a special project this Christmas, ahead of the full-scale start in 2026. This is the first step for Japan and the Philippines to join hands and create future smiles.",
-                story_photo_caption: "Scenes of support activities on the ground",
-                vision_title_1: "Visible and Invisible",
-                vision_title_2: "Supporting Food, Clothing, and Shelter with Japanese Values.",
-                vision_subtitle: "~The Humanitarian Economy We Aim For~",
-                vision_p1: "We, UZUSHIO Holdings, seriously believe that 'Japanese values' contribute to world peace.",
-                vision_p2: "We fear that simply continuing modern capitalism will make it difficult to secure food, clothing, shelter, and happiness for billions of people around the world.",
-                vision_p3: "That is why we want to do what we can so that the capital created so far is used not only to generate capital but also <strong class=\"text-white font-bold border-b border-white/50\">'firmly used for human food, clothing, and shelter'</strong>.<br>We want to express this to the world using Japanese values.<br>If we do so, the world economy will also change.",
-                vision_p4: "Even if it is small, we want to be a hint for those who seek a lot of hope in this rapidly changing world.",
-                vision_p5: "Creating a sustainable cycle of hope through economic activities.<br>That is the 'Humanitarian Economy' we promote.",
-                vision_p6: "This project is an important first step toward that grand vision.",
-                vision_btn: "Visit UZUSHIO Holdings Official Site",
-                pdf_download: "View Document",
-                history_title: "Legendary Sutadon: Soul from Founding & Challenge to the World",
-                history_sub: "Est. 1971. Started from a father's wish: \"I want young people to eat delicious food and do their best.\"",
-                history_p1: "In 1971, in Kunitachi, Tokyo. A ramen shop owner created \"Sutadon\" with a passionate desire to \"let young guys eat cheap and delicious food to their heart's content.\" Pork stir-fried with secret garlic soy sauce has been loved for over half a century as a unique taste that fills you with vitality the moment you eat it.",
-                vision_section_title: "To be a Japanese Restaurant that Gives Hope to the World",
-                vision_content: "The corporate philosophy of Antoworks Co., Ltd. is 'To be the underlying strength of people all over Japan and even the world through food.'<br>The UZU Family believes that they will become a representative Japanese restaurant that gives energy to people through food and gives hope to the world, not just a mere eatery.",
-                why_box_title1: "Cebu's Traditional Culture 'Lechon'",
-                why_box_p1: "Cebu Island has a food culture of gathering around a 'Roasted Pig (Lechon)', indispensable for celebrations, which continues from the Spanish colonial era in the 16th century. For them, pork dishes are historically a symbol of special 'Celebration Days'.",
-                why_box_title2: "That's why it becomes the best present",
-                why_box_p2: "Eating a bowl full of meat to the fullest.<br>That is the best luxury that makes your heart dance, which local people can rarely taste in their daily lives. Your support will be an unforgettable Christmas 'Feast' for them.",
-                pay_title_1: "Send a Warm Gift",
-                pay_title_2: "to Cebu.",
-                pay_step1_title: "[Japan]",
-                pay_step1_sub: "Buy ticket on smartphone",
-                pay_step1_desc: "Your 500 yen",
-                pay_step2_title: "[Cebu]",
-                pay_step2_sub: "Hot Sutadon is cooked",
-                pay_step2_desc: "Cooking at the event venue",
-                pay_step3_title: "[Locals]",
-                pay_step3_sub: "Receive with a smile",
-                pay_step3_desc: "The Best Present!",
-                pay_p1: "The mechanism is simple. When you purchase a 'Pay It Forward Ticket (500 yen)' on this site, that ticket turns into a warm cup of 'Sutadon' at the event venue in Cebu Island.",
-                pay_p2: "What you are giving is not just a meal ticket. It is the 'warm heart' itself that thinks of them from far away Japan.<br class=\"hidden md:block\">Why don't you become a Santa Claus in Cebu this Christmas?",
-                outline_title_1: "Japan-Philippines Joint Event",
-                outline_title_2: "Christmas Sutadon Pay It Forward Event Overview",
-                venue_desc_1: "Mactan Newtown is a 30-hectare \"Master-planned Township\" developed by Megaworld Corporation, a listed Philippine company established in 1989, located in Lapu-Lapu City, Mactan Island, Cebu, Philippines.",
-                venue_desc_2: "Megaworld is one of the largest real estate developers listed on the Philippine Stock Exchange (PSE: MEG), with a track record of developing and operating over 800 residential buildings, over 1.5 million sqm of office space, over 500,000 sqm of commercial facilities, and over 5,000 hotel rooms domestically and internationally. Total assets amount to approximately 470 billion Philippine pesos (equivalent to approximately 1.2 trillion yen), and it is known for its strong financial base and highly transparent corporate governance.",
-                venue_desc_3: "Mactan Newtown is one of its flagship projects, integrating residential, office, hotel, school, commercial facilities, and resort beach as a next-generation city where \"Live, Work, Learn, and Play\" are fused. It is a model town that embodies the philosophy of \"Live–Work–Play–Learn\" by balancing resort and urban functions.",
-                venue_desc_4: "Because of its high prestige, it is a special place selected as the <strong class=\"text-white border-b border-xmas-gold pb-0.5\">venue for the \"ASEAN Summit\" to be held in 2026</strong>.",
-                venue_desc_5: "However, its real face is surprisingly open and friendly.<br>It is also a warm community where everyone can spend time with peace of mind, with the laughter of local families and children echoing on weekends.",
-                venue_desc_6: "In this place that the world pays attention to, this event will be held with the full cooperation of a powerful partner who has signed a Memorandum of Understanding (MOU) for the promotion of Humanitarian Economy.",
-                outline_dt_1: "Date",
-                outline_dd_1: "Dec 20 (Sat) & Dec 21 (Sun), 2025<br><span class=\"text-sm font-normal text-gray-600\">16:00 - 21:00 each day</span>",
-                outline_dt_2: "Location",
                 outline_dt_2_val: "The Mactan New Town Boardwalk<br><span class=\"text-gray-500 text-xs font-sans\">(The Mactan Newtown, Lapu-Lapu City, Mactan Island, Cebu)</span>",
                 outline_dt_3: "Price",
                 outline_dd_3_1: "Pay It Forward 1 bowl worth 500 yen",
