@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Oswald:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Stripe.js (念のため残していますが、直接リンクの場合は不要です) -->
+    <!-- Stripe.js -->
     <script src="https://js.stripe.com/v3/"></script>
     <script>
         tailwind.config = {
@@ -169,8 +169,9 @@
                             移動先の画面で、再度数量を確認・変更することができます。
                         </p>
                     </div>
-                    <!-- Stripeリンク設定済み (直接リンクに変更) -->
-                    <a href="https://buy.stripe.com/aFabJ3dcCewl3Vx8TL3oA04" target="_blank" class="w-full bg-xmas-red hover:bg-red-700 text-white font-bold py-4 rounded-lg shadow-lg transition transform hover:scale-[1.02] flex items-center justify-center">
+                    
+                    <!-- Stripe 外部リンクへ変更 (ご指定のリンクに変更済み) -->
+                    <a href="https://buy.stripe.com/fZufZi6VFdL3dq3f5EenS00" target="_blank" class="w-full bg-xmas-red hover:bg-red-700 text-white font-bold py-4 rounded-lg shadow-lg transition transform hover:scale-[1.02] flex items-center justify-center">
                         <i class="fas fa-credit-card mr-2"></i><span data-i18n="pay_with_card">カードで支払う</span>
                     </a>
                 </div>
@@ -222,6 +223,9 @@
         const unitPrice = 500;
         let quantity = 1;
 
+        /* URL設定 (JavaScript内でも念のため更新) */
+        const STRIPE_LINK = "https://buy.stripe.com/fZufZi6VFdL3dq3f5EenS00"; 
+
         /* 仮想通貨情報の設定 */
         const CRYPTO_INFO = {
             btc: { 
@@ -236,7 +240,7 @@
             }
         };
 
-        // 翻訳データ
+        // 翻訳データ (小計・消費税を追加)
         const translations = {
             ja: {
                 back_top: "トップへ戻る",
@@ -416,7 +420,6 @@
             });
         }
         window.copyAddress = copyAddress;
-
     </script>
 </body>
 </html>
