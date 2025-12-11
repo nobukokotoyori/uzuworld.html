@@ -37,7 +37,7 @@
                 UZUSHIO<span class="font-normal ml-1 text-xs">Holdings</span> × UZU PH
             </div>
             <div class="flex items-center gap-3">
-                <button type="button" onclick="window.toggleLanguage()" class="flex items-center gap-1 text-white hover:text-xmas-gold transition text-xs md:text-sm border border-white/30 px-2 py-1 rounded-full bg-white/10 backdrop-blur-sm cursor-pointer z-50">
+                <button onclick="window.toggleLanguage()" class="flex items-center gap-1 text-white hover:text-xmas-gold transition text-xs md:text-sm border border-white/30 px-2 py-1 rounded-full bg-white/10 backdrop-blur-sm cursor-pointer">
                     <i class="fas fa-globe"></i>
                     <span id="lang-label">English</span>
                 </button>
@@ -77,7 +77,7 @@
                     </div>
                 </div>
 
-                <!-- 金額内訳エリア -->
+                <!-- 金額内訳エリア (修正: 消費税計算を追加) -->
                 <div class="mt-6 pt-6 border-t border-dashed border-gray-200 space-y-2">
                     <div class="flex justify-between text-gray-600">
                         <span data-i18n="subtotal_label">小計</span>
@@ -169,9 +169,8 @@
                             移動先の画面で、再度数量を確認・変更することができます。
                         </p>
                     </div>
-                    
-                    <!-- Stripe 外部リンクへ変更 (ご指定のリンクに変更済み) -->
-                    <a href="https://buy.stripe.com/fZufZi6VFdL3dq3f5EenS00" target="_blank" class="w-full bg-xmas-red hover:bg-red-700 text-white font-bold py-4 rounded-lg shadow-lg transition transform hover:scale-[1.02] flex items-center justify-center">
+                     <!-- Stripe 外部リンクへ変更 (ご指定のリンクに変更済み) -->
+                     <a href="https://buy.stripe.com/7sYfZi7ZJbCV1Hl0aKenS01" target="_blank" class="w-full bg-xmas-red hover:bg-red-700 text-white font-bold py-4 rounded-lg shadow-lg transition transform hover:scale-[1.02] flex items-center justify-center">
                         <i class="fas fa-credit-card mr-2"></i><span data-i18n="pay_with_card">カードで支払う</span>
                     </a>
                 </div>
@@ -223,8 +222,8 @@
         const unitPrice = 500;
         let quantity = 1;
 
-        /* URL設定 (JavaScript内でも念のため更新) */
-        const STRIPE_LINK = "https://buy.stripe.com/fZufZi6VFdL3dq3f5EenS00"; 
+        /* URL設定 */
+        const STRIPE_LINK = "https://buy.stripe.com/7sYfZi7ZJbCV1Hl0aKenS01"; 
 
         /* 仮想通貨情報の設定 */
         const CRYPTO_INFO = {
@@ -420,6 +419,11 @@
             });
         }
         window.copyAddress = copyAddress;
+
+        function proceedToCardPayment() {
+            window.location.href = STRIPE_LINK;
+        }
+        window.proceedToCardPayment = proceedToCardPayment;
     </script>
 </body>
 </html>
