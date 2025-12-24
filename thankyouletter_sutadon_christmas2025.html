@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Official Santa 2025 - Echoes of Light & UZU WORLD</title>
+    <title>Official Santa 2025 - UZU WORLD</title>
     <style>
         body, html {
             margin: 0; padding: 0; height: 100%;
@@ -40,12 +40,10 @@
             padding: 15px; border-radius: 10px;
         }
 
-        /* YouTubeエリア */
         .video-container { display: flex; flex-direction: column; gap: 25px; margin: 30px 0; }
         
-        /* 縦型動画（Shorts）の調整：幅を60%に制限して小さく表示 */
         .video-wrapper.portrait {
-            position: relative; width: 60%; margin: 0 auto; padding-top: 106.6%; /* 9:16比率を維持しつつ幅を制限 */
+            position: relative; width: 60%; margin: 0 auto; padding-top: 106.6%;
             background: #000; border-radius: 15px; overflow: hidden;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
@@ -63,22 +61,37 @@
         .video-group { margin-top: 10px; text-align: left; }
         .video-label { font-size: 0.9rem; font-weight: bold; color: #1a2a6c; margin-bottom: 10px; }
 
-        audio { width: 100%; margin-top: 15px; }
-        .music-label { font-size: 0.8rem; color: #7f8c8d; margin: 10px 0 30px; }
+        /* ダウンロードセクション */
+        .download-box {
+            margin: 20px 0 40px; padding: 20px;
+            background: rgba(178, 31, 31, 0.05);
+            border-radius: 15px; border: 1px dashed #b21f1f;
+        }
+        .download-btn {
+            display: inline-block; padding: 12px 24px;
+            background-color: #b21f1f; color: white;
+            text-decoration: none; border-radius: 30px;
+            font-weight: bold; font-size: 0.9rem;
+            transition: transform 0.2s; margin-top: 15px;
+        }
+        .download-btn:hover { transform: scale(1.05); }
 
-        /* Echoes of Light 説明セクション */
+        audio { width: 100%; margin-top: 15px; }
+        .music-label { font-size: 0.8rem; color: #7f8c8d; margin: 10px 0 5px; }
+
         .project-description {
             background: linear-gradient(135deg, #f9f9f9 0%, #fff 100%);
             border: 1px solid #e0e0e0; padding: 25px; border-radius: 15px;
             margin-top: 40px; text-align: left;
         }
-        .project-title { color: #b21f1f; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px; display: block; }
-        .project-tagline { color: #1a2a6c; font-weight: bold; font-size: 0.9rem; margin-bottom: 10px; display: block; }
+        .project-title { color: #b21f1f; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; display: block; }
+        .project-tagline { color: #1a2a6c; font-weight: bold; font-size: 0.9rem; margin-bottom: 15px; display: block; }
         .project-text { font-size: 0.85rem; color: #555; line-height: 1.6; }
 
         .footer-logo {
             margin-top: 30px; font-weight: bold; color: #1a2a6c;
             font-size: 0.9rem; letter-spacing: 1px; opacity: 0.8;
+            border-top: 1px solid #eee; padding-top: 30px;
         }
 
         .snowflake {
@@ -135,7 +148,18 @@
             </p>
 
             <audio controls src="Thank you Japan.mp3"></audio>
-            <div class="music-label">Music: Thank you Japan (Produced by Flower Angel)</div>
+            <div class="music-label">Music: Thank you Japan</div>
+
+            <div class="download-box">
+                <p style="font-size: 0.85rem; line-height: 1.6; color: #555; margin: 0;">
+                    If you haven't received your Certificate of Kindness yet, please download it here. Keeping this certificate might bring you something special at the event in March!<br>
+                    <span style="font-size: 0.8rem; display: block; margin-top: 8px;">
+                        支援いただいた方で、まだ感謝状をお受け取りでない方はこちらからダウンロードしてください。<br>
+                        <strong>この感謝状を大切に持っておくと、3月のイベントで何か素敵なことが起こるかもしれません。</strong>
+                    </span>
+                </p>
+                <a href="certificateofkindness.jpg" download class="download-btn">Download Certificate</a>
+            </div>
 
             <div class="video-group">
                 <div class="video-label">▶ Winter Solstice Release: "Mother's love"</div>
@@ -146,19 +170,19 @@
 
             <div class="project-description">
                 <span class="project-title">Echoes of Light</span>
-                <span class="project-tagline">Global Art & Humanitarian Project</span>
+                <span class="project-tagline">Global Art & Humanitarian Project produced by Flower Angel</span>
                 <p class="project-text">
                     "Echoes of Light" is a global initiative that bridges the gap between art and social impact. By integrating creative expression with the "Humanitarian Economy," we provide sustainable support for children and communities in need. Our mission is to support the evolution of the Humanitarian Economy through the power of art, turning inspiration into tangible change.
                 </p>
-                <p class="project-text" style="border-top: 1px solid #eee; pt-10px; margin-top: 10px; padding-top: 10px;">
-                    「Echoes of Light」は、アートと社会貢献を繋ぐグローバル・プロジェクトです。アートの分野から「人道経済（Humanitarian Economy）」を強力にバックアップし、創造的な表現を通じて世界中の子供たちやコミュニティへ持続可能な支援を届けます。
+                <p class="project-text" style="border-top: 1px solid #eee; margin-top: 10px; padding-top: 10px;">
+                    「Echoes of Light」は、Flower Angelプロデュースによる、アートと社会貢献を繋ぐグローバル・プロジェクトです。アートの分野から「人道経済（Humanitarian Economy）」を強力にバックアップし、創造的な表現を通じて世界中の子供たちやコミュニティへ持続可能な支援を届けます。
                 </p>
             </div>
 
             <div class="footer-logo">
                 Everything started from your kindness.<br><br>
-                Echoes of Light & UZU WORLD<br>
-                <span style="font-size: 0.7rem;">Produced by Flower Angel / Managed by UZUSHIO HOLDINGS & UZU PH</span>
+                UZU WORLD<br>
+                <span style="font-size: 0.7rem;">Managed by UZUSHIO HOLDINGS & UZU PH / Produced by Flower Angel</span>
             </div>
         </div>
     </div>
