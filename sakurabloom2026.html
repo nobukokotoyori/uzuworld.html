@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAKURA BLOOM 2026</title>
+    <meta name="description" content="SAKURA BLOOM 2026：セブ・日本・ハワイを繋ぐHumanitarian Economyの実証実験。10,000のPay It Forwardで世界を変える一端を担うプロジェクト。">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;900&family=Shippori+Mincho:wght@400;500;600;700;800&family=Oswald:wght@200;300;400;500;600&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'uzu-blue': '#0a1f4d', /* UZUSHIO Holdings Navy */
+                        'sakura-main': '#ffafbd', /* Soft Pink */
+                        'sakura-dark': '#ffc3a0', /* Peach/Pink gradient end */
+                        'sakura-accent': '#e94e77', /* Deep Pink for buttons */
+                        'fresh-green': '#d4fc79', /* Spring Green */
+                        'gold-accent': '#d4af37',
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        mincho: ['"Shippori Mincho"', 'serif'],
+                        oswald: ['"Oswald"', 'sans-serif'],
+                        cinzel: ['"Cinzel"', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fall': 'fall 10s linear infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fall: {
+                            '0%': { transform: 'translateY(-10%) rotate(0deg)', opacity: '0' },
+                            '10%': { opacity: '1' },
+                            '100%': { transform: 'translateY(100vh) rotate(360deg)', opacity: '0' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-sakura-pattern {
+            background-color: #fff5f7;
+            background-image: radial-gradient(#ffafbd 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .text-shadow-light {
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+        .petal {
+            position: absolute;
+            background-color: #ffd7e6;
+            border-radius: 150% 0 150% 0;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+        /* Slideshow Styles */
+        .slideshow-item {
+            transition: opacity 1.5s ease-in-out;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-white antialiased overflow-x-hidden">
+
+    <!-- Petal Animation Container (Overlay) -->
+    <div id="petals-container" class="fixed inset-0 pointer-events-none z-0 overflow-hidden h-full w-full"></div>
+
+    <!-- 【Header】 -->
+    <header class="fixed top-0 left-0 w-full shadow-sm z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-pink-100 flex flex-col">
+        <!-- Date Banner -->
+        <div class="bg-sakura-accent text-white text-center py-1 text-xs md:text-sm font-bold tracking-widest w-full font-oswald">
+            2026年3月21日(土) 〜 4月9日(木)
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-2 w-full flex justify-between items-center">
+            <!-- Logos -->
+            <div class="flex items-center gap-2 md:gap-4">
+                <div class="flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
+                    <div class="text-uzu-blue font-bold text-xs md:text-lg tracking-tighter border-2 border-uzu-blue px-1.5 py-0.5 md:px-2 md:py-0.5 leading-tight">
+                        UZUSHIO<span class="text-[10px] block font-normal md:inline md:ml-1">Holdings</span>
+                    </div>
+                    <span class="text-gray-400 hidden md:block text-base">×</span>
+                    <div class="text-uzu-blue font-bold text-xs md:text-lg tracking-tighter border-2 border-uzu-blue px-1.5 py-0.5 md:px-2 md:py-0.5 leading-tight">
+                        UZU PH<span class="text-[10px] block font-normal md:inline md:ml-1">Enterprises Inc.</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Language & CTA -->
+            <div class="flex items-center gap-3 md:gap-4">
+                <button type="button" onclick="window.toggleLanguage()" class="flex items-center gap-1 text-uzu-blue hover:text-sakura-accent transition text-sm md:text-base px-3 py-1 rounded-full border border-gray-200 hover:bg-pink-50 cursor-pointer">
+                    <i class="fas fa-globe"></i>
+                    <span id="lang-label">English</span>
+                </button>
+                <a href="https://uzuworld.com/payment.html" class="hidden md:block bg-gradient-to-r from-sakura-accent to-pink-500 text-white font-bold py-2 px-6 rounded-full shadow-lg transition transform hover:scale-105 text-sm">
+                    <i class="fas fa-hand-sparkles mr-2"></i><span data-i18n="header_cta">世界を変える一端を担う</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 【FV】 SAKURA BLOOM 2026 Hero Section -->
+    <section class="relative min-h-screen pt-24 flex items-center justify-center overflow-hidden">
+        <!-- Background Image Slideshow -->
+        <div class="absolute inset-0 z-0">
+            <!-- Image 1: Sakura Full Bloom -->
+            <div class="slideshow-item absolute inset-0 opacity-100" style="background-image: url('https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+            <!-- Image 2: Pagoda and Sakura -->
+            <div class="slideshow-item absolute inset-0 opacity-0" style="background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+            <!-- Image 3: Mactan Night -->
+            <div class="slideshow-item absolute inset-0 opacity-0" style="background-image: url('mactannight.jpg'); background-size: cover; background-position: center;"></div>
+            <!-- Image 4: Cebu Sea -->
+            <div class="slideshow-item absolute inset-0 opacity-0" style="background-image: url('https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+            <!-- Image 5: Hawaii -->
+            <div class="slideshow-item absolute inset-0 opacity-0" style="background-image: url('https://images.unsplash.com/photo-1505852679233-d9fd70aff56d?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+            
+            <div class="absolute inset-0 bg-white/20 mix-blend-overlay z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent z-10"></div>
+        </div>
+
+        <div class="relative z-20 container mx-auto px-4 py-12 text-center flex flex-col items-center">
+            
+            <!-- Title -->
+            <h1 class="font-mincho font-bold text-5xl md:text-7xl lg:text-8xl text-uzu-blue leading-none mb-2 drop-shadow-sm tracking-wide mt-10">
+                <span class="text-sakura-accent">SAKURA</span> BLOOM
+            </h1>
+            
+            <!-- 2026 Design: New Cycle Begins -->
+            <div class="relative mb-8 mt-2 group cursor-default">
+                <!-- Main Text with Gradient -->
+                <div class="text-6xl md:text-8xl lg:text-9xl font-cinzel font-bold tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-uzu-blue via-purple-600 to-sakura-accent relative z-10 transition duration-700 group-hover:tracking-[0.15em]">
+                    2026
+                </div>
+                
+                <!-- Glow Effect Behind -->
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-gradient-to-r from-blue-200 via-white to-pink-200 opacity-30 blur-2xl rounded-full z-0 animate-pulse-slow"></div>
+                
+                <!-- Subtitle: New Cycle -->
+                <div class="text-[10px] md:text-xs text-gray-600 tracking-[0.6em] uppercase mt-4 font-cinzel flex items-center justify-center opacity-80">
+                    <span class="hidden md:inline-block w-16 h-[1px] bg-gradient-to-r from-transparent to-gray-500 mr-4"></span>
+                    The Beginning of a New Cycle
+                    <span class="hidden md:inline-block w-16 h-[1px] bg-gradient-to-l from-transparent to-gray-500 ml-4"></span>
+                </div>
+            </div>
+
+            <p class="text-lg md:text-2xl font-medium text-gray-800 mt-4 mb-8 max-w-4xl mx-auto leading-loose font-serif">
+                <span data-i18n="fv_subtitle_1">セブから日本、そしてハワイへ。</span><br>
+                <span data-i18n="fv_subtitle_2">Humanitarian Economy（人道経済）を、共に証明する旅。</span><br>
+                <span class="text-base md:text-xl text-sakura-accent block mt-4 font-mincho" data-i18n="fv_subtitle_3">3月21日は牡羊座の始まりであり、新しいサイクルの始まりでもあります。</span>
+            </p>
+
+            <div class="bg-white/80 backdrop-blur-md p-8 rounded-xl border-l-4 border-sakura-accent shadow-2xl max-w-3xl mx-auto mb-12">
+                <p class="text-gray-700 font-medium leading-relaxed" data-i18n="fv_mission">
+                    支援ではなく、共創へ。<br>
+                    <span class="text-2xl md:text-3xl text-sakura-accent font-black font-oswald">10,000</span> <span class="text-lg font-bold">Pay It Forward</span>
+                    の連鎖が、<br>
+                    「善意が経済を回す」Humanitarian Economyの証明の始まりになる。
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4">
+                <a href="https://uzuworld.com/payment.html" class="bg-gradient-to-r from-sakura-accent to-pink-600 text-white font-bold py-4 px-10 rounded-full shadow-[0_0_20px_rgba(233,78,119,0.5)] hover:shadow-[0_0_30px_rgba(233,78,119,0.7)] transition transform hover:-translate-y-1 min-w-[240px] text-lg">
+                    <i class="fas fa-hand-holding-heart mr-2"></i><span data-i18n="btn_support">プロジェクトに参加する</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 【Timeline】 3-Location Journey -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-sakura-accent font-oswald text-xl tracking-[0.3em] uppercase">The Grand Tour</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-uzu-blue mt-2 font-mincho">
+                    <span data-i18n="journey_title">Island to Island Peace Project</span>
+                </h2>
+                <p class="mt-6 text-gray-600 max-w-2xl mx-auto leading-relaxed" data-i18n="journey_desc">
+                    セブ島のピンクシャワーから始まり、日本の本物の桜、そしてハワイのALOHAへ。<br>
+                    国境を越え、経済と人道の融合を証明する20日間の旅路。
+                </p>
+            </div>
+
+            <div class="relative max-w-7xl mx-auto">
+                <!-- Connecting Line -->
+                <div class="hidden md:block absolute top-[40%] left-10 right-10 h-0.5 bg-gradient-to-r from-blue-300 via-pink-400 to-green-300 z-0"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                    
+                    <!-- Phase 1: Cebu -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-500 group border border-gray-100">
+                        <div class="h-2 bg-uzu-blue"></div>
+                        <div class="p-8">
+                            <div class="flex justify-between items-end mb-4">
+                                <h3 class="text-4xl font-oswald font-bold text-uzu-blue">CEBU</h3>
+                                <span class="text-sm font-bold text-gray-400">PHASE 01</span>
+                            </div>
+                            <div class="inline-block bg-pink-100 text-sakura-accent px-3 py-1 rounded mb-6 font-oswald font-bold tracking-wide">
+                                2026.3.21 - 3.27
+                            </div>
+                            <div class="aspect-video bg-gray-200 rounded-lg mb-6 overflow-hidden">
+                                <img src="mactannight.jpg" onerror="this.src='https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=600&q=80'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Cebu Event">
+                            </div>
+                            <h4 class="font-bold text-lg mb-2 text-gray-800" data-i18n="p1_title">The Ohanami Experience</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4" data-i18n="p1_desc_text">
+                                マクタンニュータウンに咲く桜の下で、10,000食のすた丼Pay It Forwardを実施。「受け取るために与える」Humanitarian Economyの実証実験を開始します。
+                            </p>
+                            <ul class="text-sm text-gray-600 space-y-2 mb-4 border-t border-gray-100 pt-3" data-i18n="p1_list">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-sakura-accent mr-2"></i> Pay It Forward 10,000 Challenge</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-sakura-accent mr-2"></i> KIZUNA Exhibition / SHOP</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-sakura-accent mr-2"></i> Concerts & Screening with 10,000 audience</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2: Japan -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-500 group border border-gray-100 relative -top-4 md:-top-12 border-t-4 border-t-sakura-accent">
+                        <div class="h-2 bg-sakura-accent"></div>
+                        <div class="p-8">
+                            <div class="flex justify-between items-end mb-4">
+                                <h3 class="text-4xl font-oswald font-bold text-sakura-accent">JAPAN</h3>
+                                <span class="text-sm font-bold text-gray-400">PHASE 02</span>
+                            </div>
+                            <div class="inline-block bg-pink-100 text-sakura-accent px-3 py-1 rounded mb-6 font-oswald font-bold tracking-wide">
+                                2026.3.28 - 4.3
+                            </div>
+                            <div class="aspect-video bg-gray-200 rounded-lg mb-6 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Japan Tour">
+                            </div>
+                            <h4 class="font-bold text-lg mb-2 text-gray-800" data-i18n="p2_title">Real Sakura & Business Tour</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4" data-i18n="p2_desc">
+                                大阪・京都から東京・神奈川へ。日本の本物の桜を愛でながら、海外投資家やパートナーと企業訪問を行うクローズドツアー。ビジネス促進と文化交流の融合。
+                            </p>
+                            <ul class="text-xs text-gray-500 space-y-1 border-t border-gray-100 pt-3">
+                                <li><i class="fas fa-check text-sakura-accent mr-1"></i> Business Promotion Tour</li>
+                                <li><i class="fas fa-check text-sakura-accent mr-1"></i> Investment Networking</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3: Hawaii -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-500 group border border-gray-100">
+                        <div class="h-2 bg-green-400"></div>
+                        <div class="p-8">
+                            <div class="flex justify-between items-end mb-4">
+                                <h3 class="text-4xl font-oswald font-bold text-green-600">HAWAII</h3>
+                                <span class="text-sm font-bold text-gray-400">PHASE 03</span>
+                            </div>
+                            <div class="inline-block bg-green-100 text-green-700 px-3 py-1 rounded mb-6 font-oswald font-bold tracking-wide">
+                                2026.4.4 - 4.9
+                            </div>
+                            <div class="aspect-video bg-gray-200 rounded-lg mb-6 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1505852679233-d9fd70aff56d?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Hawaii Project">
+                            </div>
+                            <h4 class="font-bold text-lg mb-2 text-gray-800" data-i18n="p3_title">Island to Island Peace Project</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4" data-i18n="p3_desc_text">
+                                Kona & Oahu。セブ島から始まったバトンをハワイへ。現地のパートナーと共にHumanitarian Economyを促進し、環太平洋の平和と経済の架け橋を作ります。
+                            </p>
+                            <ul class="text-sm text-gray-600 space-y-2 mb-4 border-t border-green-100 pt-3" data-i18n="p3_list">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Local Partnership</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Global Peace Initiative</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Pacific Economic Bridge</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 【Venue Info】 The Mactan Newtown (Restored) -->
+    <section class="py-20 bg-gray-50 border-y border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <div class="relative rounded-2xl overflow-hidden shadow-xl group">
+                    <img src="mactanexpo.jpg" onerror="this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80'" alt="The Mactan Newtown" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-uzu-blue/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 w-full p-8">
+                        <span class="text-gold-accent font-oswald text-sm tracking-widest uppercase block mb-1">Special Venue Partner</span>
+                        <h3 class="text-white text-3xl font-bold font-serif">The Mactan Newtown</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <h3 class="text-2xl md:text-3xl font-bold text-uzu-blue mb-6 font-mincho leading-tight">
+                    <span data-i18n="venue_title">世界が注目する、<br>次世代のスマートタウンシップ。</span>
+                </h3>
+                <div class="space-y-5 text-gray-600 leading-relaxed text-sm md:text-base">
+                    <p data-i18n="venue_p1">
+                        フィリピン最大級の不動産デベロッパー <strong>Megaworld Corporation</strong> が手掛ける、約30ヘクタールの巨大プロジェクト。「住む・働く・学ぶ・楽しむ」が融合した "Live-Work-Play-Learn" の理念を体現する街です。
+                    </p>
+                    <div class="border-l-4 border-gold-accent pl-4 bg-white p-4 rounded shadow-sm">
+                        <p class="font-bold text-gray-800" data-i18n="venue_p2">
+                            その格式の高さから、<strong class="text-sakura-accent">2026年「ASEAN首脳会議」の会場</strong>にも選定。世界中のVIPが集うこの場所が、SAKURA BLOOM 2026の舞台となります。
+                        </p>
+                    </div>
+                    <p data-i18n="venue_p3">
+                        しかし、その素顔は開放的でフレンドリー。週末には多くの家族連れで賑わう、安心と活気に満ちたコミュニティです。この場所から、Humanitarian Economyの波を世界へ広げていきます。
+                    </p>
+                </div>
+                <div class="mt-8">
+                    <a href="https://www.facebook.com/MactanNewtownMegaworld" target="_blank" class="inline-flex items-center text-uzu-blue font-bold hover:text-sakura-accent transition gap-2 border-b border-uzu-blue hover:border-sakura-accent pb-1">
+                        <span>Visit Official Facebook Page</span> <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 【Challenge & Concert】 -->
+    <section id="mission" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 relative">
+                    <div class="absolute inset-0 bg-sakura-accent/10 rounded-full blur-3xl transform -translate-x-4 translate-y-4"></div>
+                    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80" onerror="this.src='https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80'" alt="Children" class="relative rounded-2xl shadow-2xl z-10 w-full object-cover">
+                    <div class="absolute -bottom-6 -right-6 bg-uzu-blue text-white p-6 rounded-xl shadow-xl z-20 max-w-xs border-4 border-white">
+                        <p class="font-oswald text-2xl font-bold mb-1">A Story of Hope</p>
+                        <p class="text-xs text-gray-300">Concert & Screening & Talk Session</p>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <span class="text-sakura-accent font-bold tracking-widest uppercase mb-2 block">The Goal</span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-uzu-blue mb-8 font-mincho leading-tight" data-i18n="challenge_title">
+                        <span class="text-sakura-accent">10,000食</span>の証明が、<br>
+                        希望の扉を開く。
+                    </h2>
+                    
+                    <div class="space-y-6 text-gray-600 leading-relaxed text-lg">
+                        <p data-i18n="challenge_p1">
+                            私たちのミッションは、3/21-27の期間中に10,000食のPay It Forwardを達成すること。しかし、これは単なる食事の配布ではありません。
+                        </p>
+                        <p data-i18n="challenge_p2">
+                            目標が達成された時、10,000人の子どもや家族を招待する<strong>「A Story of Hope Concert & Screening」</strong>（コンサート・上映会・トークセッション）が無料で幕を開けます。
+                        </p>
+                        
+                        <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-uzu-blue shadow-sm">
+                            <h3 class="text-uzu-blue font-bold mb-3 flex items-center text-xl">
+                                <i class="fas fa-hand-holding-heart mr-2"></i>
+                                <span data-i18n="rule_title">参加のルール：「Give First」</span>
+                            </h3>
+                            <p class="text-sm md:text-base mb-4" data-i18n="rule_desc">
+                                Humanitarian Economyにおいて、一方的な「受け取り」は存在しません。無料招待を受ける方々も、自らができる人道活動（Humanitarian Activity）を実施し、SNSで投稿・証明する必要があります。<br>
+                                <strong class="block mt-3 text-sakura-accent">「受け取るためには、先に与えること」</strong>
+                                この哲学を現地で共有し、証明することが、このプロジェクトの真髄です。
+                            </p>
+                            
+                            <!-- Updated A Story of Hope Link as Visual Card (More Emphasized) -->
+                            <a href="https://echoes-of-light.jp/sakurabloom2026" target="_blank" class="block relative rounded-xl overflow-hidden group shadow-[0_0_20px_rgba(233,78,119,0.3)] hover:shadow-[0_0_30px_rgba(233,78,119,0.5)] transition-all duration-300 border-2 border-gold-accent transform hover:-translate-y-1">
+                                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2070&auto=format&fit=crop');"></div>
+                                <div class="absolute inset-0 bg-uzu-blue/80 group-hover:bg-uzu-blue/70 transition-colors"></div>
+                                
+                                <div class="relative p-6 flex items-center justify-between">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-gold-accent border border-white/30 shrink-0">
+                                            <i class="fas fa-film text-2xl"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-gold-accent font-bold text-xs uppercase tracking-widest mb-1 shadow-black drop-shadow-md">Official Site</p>
+                                            <h4 class="text-white font-bold text-lg md:text-xl font-serif leading-tight">A Story of Hope<br><span class="text-sm font-normal text-gray-200">Concert & Screening 詳細</span></h4>
+                                        </div>
+                                    </div>
+                                    <div class="hidden sm:flex items-center gap-2 bg-sakura-accent text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg group-hover:bg-pink-500 transition">
+                                        <span>Click Here</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                    <div class="sm:hidden w-10 h-10 rounded-full bg-sakura-accent text-white flex items-center justify-center shadow-lg">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 【B2B / Business】 KIZUNA Exhibition -->
+    <section class="py-24 bg-uzu-blue text-white relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600 rounded-full mix-blend-overlay filter blur-[100px] opacity-30"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-pink-600 rounded-full mix-blend-overlay filter blur-[100px] opacity-30"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-gold-accent text-sm tracking-[0.2em] uppercase border border-gold-accent/50 px-4 py-1 rounded-full">For Business Partners</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-6 font-mincho">
+                    <span data-i18n="biz_title">海外進出のゲートウェイ、セブ島。<br>そして世界から日本へのゲートウェイ、セブ島。</span>
+                </h2>
+                <p class="text-gray-300 mt-6 max-w-4xl mx-auto text-lg leading-relaxed" data-i18n="biz_desc">
+                    SAKURA BLOOM 2026期間中、御社の商品・サービスを世界へ。展示、販売、そして常設展開まで。UZUSHIO Holdingsが現地のUZU PHにコネクトします。<br><br>
+                    セブ島は成田と関西国際空港から毎日直行便が出ており、4-5時間と気軽に海外進出をするのに適しています。また、デイリーで約40,000人が近隣の既存のコーヒーショップ、レストラン、ショップなどを利用し、事実として売上の数字が現地の購買意欲により安定しているロケーションです。<br><br>
+                    年間4000万人もの観光客は増えても日本人と海外のビジネス発展まで実感が沸かない方が多いのが事実なのではないでしょうか。<br>
+                    円安の中、日本のいいものを海外の方にHumanitarianアクティビティーを促進して外貨を取得しませんか？
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Opportunity 1 -->
+                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition group hover:-translate-y-2">
+                    <div class="text-5xl text-sakura-main mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-fan"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 font-mincho" data-i18n="biz_opt1_title">The Ohanami Experience</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="biz_opt1_desc">
+                        セブ島の桜（ピンクシャワー）の下で日本文化を分かち合う交流の場。ブース出展や体験型イベントを通じて、国際的な認知とファンベースを構築します。
+                    </p>
+                </div>
+
+                <!-- Opportunity 2 -->
+                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition group hover:-translate-y-2">
+                    <div class="text-5xl text-gold-accent mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 font-mincho" data-i18n="biz_opt2_title">KIZUNA Exhibition</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="biz_opt2_desc">
+                        日本の高品質な製品（食品、化粧品、医療、エネルギー機材等）を展示。現地富裕層やバイヤーへ直接アピールし、海外進出の足掛かりを作ります。
+                    </p>
+                </div>
+
+                <!-- Opportunity 3 -->
+                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition group hover:-translate-y-2">
+                    <div class="text-5xl text-fresh-green mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 font-mincho" data-i18n="biz_opt3_title">KIZUNA SHOP & Ads</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="biz_opt3_desc">
+                        イベント後も継続的な接点を。常設ショップでの委託販売や、デジタルサイネージを活用した広告展開により、長期的なブランディングと販路拡大を支援します。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <p class="text-gray-400 mb-8" data-i18n="biz_note">
+                    ※業種・規模・製品により最適なプランをご提案します。
+                </p>
+                
+                <div class="flex flex-col md:flex-row justify-center gap-6 items-center">
+                    <a href="mailto:info@uzushio-holdings.com" class="w-full md:w-auto inline-block bg-gradient-to-r from-white to-gray-200 text-uzu-blue hover:to-white font-bold py-4 px-10 rounded-full transition duration-300 shadow-lg transform hover:scale-105">
+                        <i class="fas fa-envelope mr-2"></i><span data-i18n="biz_cta_mail">メールで問い合わせる</span>
+                    </a>
+                    
+                    <span class="text-gray-400 text-sm font-oswald">OR</span>
+
+                    <!-- Updated Google Calendar Booking Link -->
+                    <a href="https://calendar.app.google/y4xPocNQByf6bQvcA" target="_blank" class="w-full md:w-auto inline-block bg-blue-600/80 hover:bg-blue-500 text-white border border-blue-400 font-bold py-4 px-10 rounded-full transition duration-300 shadow-lg transform hover:scale-105 backdrop-blur-sm">
+                        <i class="fas fa-video mr-2"></i><span data-i18n="biz_cta_meet">オンライン商談を予約</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 【Join the Movement】 Ticket Purchase -->
+    <section id="payment" class="py-24 px-4 bg-sakura-pattern">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="text-sakura-accent font-bold tracking-widest uppercase mb-2 block">Join the Movement</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-uzu-blue mb-4 font-mincho">
+                <span data-i18n="action_title">世界を変える一端を担う Pay It Forward Ticket</span>
+            </h2>
+             <p class="text-xl text-sakura-accent font-bold mb-8 font-mincho" data-i18n="action_sub">恩送りチケット購入ミッション</p>
+
+            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl border border-gray-100 relative overflow-hidden text-left md:text-center">
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-uzu-blue via-sakura-accent to-gold-accent"></div>
+                
+                <div class="text-lg text-gray-700 mb-8 font-medium leading-relaxed" data-i18n="action_desc">
+                    <p class="mb-4">「伝説のすた丼屋」は人道経済のパートナー。</p>
+                    <p class="mb-4 text-sm text-gray-600 bg-gray-50 p-4 rounded-lg border-l-4 border-sakura-accent">
+                        昨年のクリスマスには、共に200食をスラム街の子供たちへ直接届けました。<br>
+                        <a href="https://uzuworld.com" target="_blank" class="inline-flex items-center text-uzu-blue font-bold hover:text-sakura-accent mt-2 underline flex-wrap">
+                            <i class="fas fa-external-link-alt mr-1"></i>
+                            Sutadon Christmas 2025企画はこちら
+                        </a>
+                    </p>
+                    <p class="mb-4"><strong class="text-sakura-accent text-xl border-b-2 border-sakura-accent/30 inline-block pb-1">購入した数だけ、現地の子供や家族など、コンサートにご招待し、希望に触れる機会を渡せます。</strong></p>
+                    <span class="text-sm text-gray-600 block mt-4">
+                        購入いただいたチケットは、イベント開催期間中にHumanitarian Economyを促進した現地の子供たちやその家族に責任を持って直接届けられます。（コンサートに来られた方々にも抽選で無料で食べられます。）<br>
+                        <strong>【会場特典】購入して終わりではありません、現地のコンサート会場で購入完了画面を提示してください。コンサートへの無料入場をプレゼントいたします！</strong>
+                    </span>
+                </div>
+
+                <!-- Reward Tiers -->
+                <div class="mb-10 overflow-x-auto">
+                    <h3 class="text-xl font-bold text-uzu-blue mb-4 font-oswald border-b-2 border-uzu-blue inline-block pb-1">REWARD TIERS</h3>
+                    <table class="w-full text-left md:text-center border-collapse">
+                        <thead>
+                            <tr class="text-gray-500 text-xs md:text-sm uppercase tracking-wider border-b border-gray-200">
+                                <th class="py-3 px-2">Ticket Qty</th>
+                                <th class="py-3 px-2">Contribution</th>
+                                <th class="py-3 px-2">Your Benefit (Venue)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm md:text-base">
+                            <tr class="border-b border-gray-100 hover:bg-pink-50 transition">
+                                <td class="py-4 px-2 font-bold text-uzu-blue">1 Bowl</td>
+                                <td class="py-4 px-2">¥500</td>
+                                <td class="py-4 px-2 text-gray-600" data-i18n="tier_1_benefit">コンサート無料入場</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-pink-50 transition">
+                                <td class="py-4 px-2 font-bold text-uzu-blue">20 Bowls</td>
+                                <td class="py-4 px-2">¥10,000</td>
+                                <td class="py-4 px-2 font-bold text-sakura-accent" data-i18n="tier_2_benefit">優先席 (Priority Seat)</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-pink-50 transition">
+                                <td class="py-4 px-2 font-bold text-uzu-blue">50 Bowls</td>
+                                <td class="py-4 px-2">¥25,000</td>
+                                <td class="py-4 px-2" data-i18n="tier_3_benefit">優先席 + VIPディナー参加権（有料）</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-pink-50 transition">
+                                <td class="py-4 px-2 font-bold text-uzu-blue">100 Bowls</td>
+                                <td class="py-4 px-2">¥50,000</td>
+                                <td class="py-4 px-2" data-i18n="tier_4_benefit">VIP席 + VIPディナー参加権（有料）</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-pink-50 transition bg-yellow-50/50">
+                                <td class="py-4 px-2 font-bold text-gold-accent">1,000 Bowls</td>
+                                <td class="py-4 px-2">¥500,000</td>
+                                <td class="py-4 px-2 font-bold text-gold-accent" data-i18n="tier_5_benefit">VIP席 + VIPディナーご招待（無料）＋期間限定オファー展示出展無料</td>
+                            </tr>
+                            <tr class="bg-uzu-blue/5 hover:bg-uzu-blue/10 transition">
+                                <td class="py-4 px-2 font-bold text-uzu-blue">10,000 Bowls</td>
+                                <td class="py-4 px-2">¥5,000,000</td>
+                                <td class="py-4 px-2 font-bold text-uzu-blue" data-i18n="tier_6_benefit">VIP席 + VIPディナーご招待 + スペシャルスポンサー＋期間限定オファーKIZUNA Exhibition展示出展無料＋KIZUNA Shop出展3ヶ月無料</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <a href="https://uzuworld.com/payment.html" class="block w-full bg-gradient-to-r from-sakura-accent to-pink-600 hover:from-pink-500 hover:to-pink-700 text-white font-bold text-xl py-5 rounded-full shadow-lg transition transform hover:scale-[1.02] animate-pulse-slow">
+                    <span data-i18n="btn_checkout">Pay It Forward Ticketを購入する</span>
+                </a>
+                
+                <div class="mt-6 flex justify-center gap-6 text-gray-400 items-center">
+                    <div class="flex flex-col items-center">
+                        <i class="fas fa-university text-2xl" title="Bank Transfer"></i>
+                        <span class="text-[10px] uppercase">Bank</span>
+                    </div>
+                    <i class="fab fa-cc-visa text-3xl" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard text-3xl" title="Mastercard"></i>
+                    <i class="fab fa-cc-amex text-3xl" title="American Express"></i>
+                    <!-- Removed JCB -->
+                    <div class="flex flex-col items-center">
+                        <i class="fab fa-bitcoin text-2xl" title="Crypto"></i>
+                        <span class="text-[10px] uppercase">Crypto</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 【Vision】 Humanitarian Economy (Moved to Bottom) -->
+    <section class="relative bg-uzu-blue text-white py-16 px-4 overflow-hidden">
+        <div class="absolute inset-0 z-0 pointer-events-none">
+            <img src="cosmicwhirlpool.jpg" alt="Uzushio Whirlpool Background" class="w-full h-full object-cover opacity-40" onerror="this.style.display='none'; this.parentElement.classList.add('bg-gradient-to-b', 'from-blue-900', 'to-black');">
+            <div class="absolute inset-0 bg-uzu-blue/70 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-uzu-blue via-transparent to-uzu-blue"></div>
+        </div>
+
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <span class="text-gold-accent font-oswald text-xs tracking-[0.2em] uppercase mb-2 block">Our Vision</span>
+            <h2 class="text-2xl md:text-4xl font-bold mb-6 leading-tight font-mincho drop-shadow-lg">
+                <span data-i18n="vision_title">目に見える・目に見えない<br>日本の価値と共にHumanitarian Economyを創造する。</span>
+            </h2>
+            <div class="h-1 w-16 bg-sakura-accent mx-auto mb-8"></div>
+            <div class="text-left md:text-center space-y-6 leading-loose font-light tracking-wide text-gray-200 text-base md:text-lg">
+                <p data-i18n="vision_p1">
+                    従来の資本主義において、資本が資本を産み数字だけが大きくなることが成功と定義される虚の世界ではなく、人間が生きていく上で根源となる <strong class="text-white font-bold">生命の基盤</strong> である <strong class="text-white font-bold">実の世界</strong> に焦点を当てます。この実の世界を確かなものにすることで、すべての人々が尊厳をもって生きられる <strong class="text-white font-bold">幸の世界</strong> を創造します。
+                </p>
+                <p data-i18n="vision_p2">
+                    現代の資本主義をただ継続するだけでは、世界中の何十億人もの人間の <strong class="text-white font-bold">尊厳ある暮らし</strong> と幸福感を確保することは難しい。私たちはそう危惧しています。私たちの目的は、一人でも多くの方がこのムーブメントの一任を担い、光に触れて救われていくこと、そしてそれを経済として持続可能性をしっかり証明していくことです。
+                </p>
+                <p class="font-serif text-white text-lg md:text-xl pt-4" data-i18n="vision_p3">
+                    経済活動を通じて、持続可能な希望のサイクルを作り出す。<br>
+                    それが、私たちが推進する「Humanitarian Economy（人道経済）」です。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 【Footer】 -->
+    <footer class="relative bg-uzu-blue text-gray-400 py-12 border-t border-gray-800 overflow-hidden">
+        <!-- Footer BG Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="mactannight.jpg" 
+                 alt="Footer Background" 
+                 class="w-full h-full object-cover opacity-20"
+                 onerror="this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=2000&q=80';">
+            <div class="absolute inset-0 bg-uzu-blue/90"></div>
+        </div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-start gap-12">
+            
+            <div class="text-center md:text-left space-y-3 md:w-1/2">
+                <div class="mb-6">
+                    <span class="text-sakura-accent font-oswald font-bold text-2xl tracking-wider block">SAKURA BLOOM 2026</span>
+                </div>
+                
+                <p class="text-xs uppercase tracking-widest text-gray-500">Organizer</p>
+                <p class="font-bold text-white text-lg">UZUSHIO Holdings 株式会社 / UZU PH Enterprises Inc.</p>
+                
+                <p class="text-xs uppercase tracking-widest text-gray-500 mt-6">Venue Partner</p>
+                <p class="text-sm">
+                    <a href="https://www.facebook.com/MactanNewtownMegaworld" target="_blank" rel="noopener noreferrer" class="hover:text-white transition underline decoration-gray-600 hover:decoration-white">The Mactan Newtown</a>
+                </p>
+
+                <p class="text-xs uppercase tracking-widest text-gray-500 mt-6">Humanitarian Economy Movement Partner</p>
+                <p class="text-sm flex flex-col md:flex-row gap-2 md:gap-4 flex-wrap">
+                    <a href="https://antoworks.com/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition underline decoration-gray-600 hover:decoration-white">株式会社アントワークス（伝説のすた丼屋）</a>
+                    <span class="hidden md:inline text-gray-600">|</span>
+                    <a href="https://www.avenge.center/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition underline decoration-gray-600 hover:decoration-white">Avenge Co., Ltd.</a>
+                    <span class="hidden md:inline text-gray-600">|</span>
+                    <a href="https://www.unkou-japan.jp" target="_blank" rel="noopener noreferrer" class="hover:text-white transition underline decoration-gray-600 hover:decoration-white">UNKOU Japan Co., Ltd.</a>
+                    <span class="hidden md:inline text-gray-600">|</span>
+                    <a href="https://bedeal.world/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition underline decoration-gray-600 hover:decoration-white">BEDEAL Ltd.</a>
+                </p>
+            </div>
+            
+            <div class="text-center md:text-right w-full md:w-1/2">
+                <!-- UZU WORLD Icons -->
+                <div class="mb-8">
+                    <p class="text-xs text-sakura-accent font-bold uppercase tracking-widest mb-3">UZU WORLD Official</p>
+                    <div class="flex justify-center md:justify-end gap-6">
+                        <a href="https://www.youtube.com/channel/UC4jLmOuuTPaAqWDZa5R9kMg" target="_blank" class="text-gray-400 hover:text-red-500 transition transform hover:scale-110"><i class="fab fa-youtube fa-xl"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61585342990076" target="_blank" class="text-gray-400 hover:text-blue-500 transition transform hover:scale-110"><i class="fab fa-facebook fa-xl"></i></a>
+                        <a href="https://www.instagram.com/uzu_world/" target="_blank" class="text-gray-400 hover:text-pink-500 transition transform hover:scale-110"><i class="fab fa-instagram fa-xl"></i></a>
+                        <a href="https://www.tiktok.com/@uzu_world" target="_blank" class="text-gray-400 hover:text-white transition transform hover:scale-110"><i class="fab fa-tiktok fa-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- UZUSHIO Holdings Contact Icons -->
+                <div class="mb-8 border-t border-gray-700 pt-6">
+                    <p class="text-xs text-gold-accent font-bold uppercase tracking-widest mb-3">Contact UZUSHIO Holdings</p>
+                    <div class="flex justify-center md:justify-end gap-6">
+                        <a href="mailto:info@uzushio-holdings.com" class="text-gray-400 hover:text-white transition transform hover:scale-110"><i class="fas fa-envelope fa-xl"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61578114391592" target="_blank" class="text-gray-400 hover:text-blue-500 transition transform hover:scale-110"><i class="fab fa-facebook fa-xl"></i></a>
+                        <a href="https://www.instagram.com/uzushiojapan/" target="_blank" class="text-gray-400 hover:text-pink-500 transition transform hover:scale-110"><i class="fab fa-instagram fa-xl"></i></a>
+                        <a href="https://www.tiktok.com/@uzushiojapan" target="_blank" class="text-gray-400 hover:text-white transition transform hover:scale-110"><i class="fab fa-tiktok fa-xl"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <a href="tokusho.html" class="text-sm hover:text-white transition block md:inline mb-2 md:mb-0" data-i18n="footer_tokusho">特定商取引法に基づく表記</a>
+                    <span class="mx-2 text-gray-700 hidden md:inline">|</span>
+                    <a href="privacy.html" class="text-sm hover:text-white transition block md:inline" data-i18n="footer_privacy">プライバシーポリシー</a>
+                </div>
+                
+                <div class="mt-6 flex flex-col items-center md:items-end">
+                    <p class="text-xs text-gray-600">Produced by <a href="https://flowerangelhk.com/" target="_blank" rel="noopener noreferrer" class="hover:text-gray-400 transition underline decoration-gray-700">Flower Angel</a></p>
+                    <a href="worldpartner.pdf" target="_blank" class="text-xs text-sakura-accent hover:text-white transition mt-2 flex items-center gap-1">
+                        <i class="fas fa-file-pdf"></i> UZU World Partnership Program
+                    </a>
+                </div>
+                <p class="mt-4 text-xs text-gray-600">&copy; 2026 UZUSHIO Holdings. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Petal Animation Script -->
+    <script>
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            
+            const size = Math.random() * 10 + 5;
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size}px`;
+            
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = Math.random() * 5 + 5 + 's';
+            
+            // Random color variation
+            const colors = ['#ffd7e6', '#ffafbd', '#ffc3a0'];
+            petal.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+            document.getElementById('petals-container').appendChild(petal);
+
+            // Remove petal after animation
+            setTimeout(() => {
+                petal.remove();
+            }, 10000);
+        }
+
+        setInterval(createPetal, 400);
+
+        // Slideshow Script
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slideshow-item');
+        
+        function showSlides() {
+            slides.forEach((slide, index) => {
+                slide.style.opacity = index === slideIndex ? '1' : '0';
+            });
+            slideIndex = (slideIndex + 1) % slides.length;
+        }
+
+        if (slides.length > 0) {
+            setInterval(showSlides, 3000); // Change image every 3 seconds
+        }
+
+        // Language Toggle Logic (Partial Implementation for Demo)
+        const translations = {
+            ja: {
+                header_cta: "世界を変える一端を担う",
+                fv_subtitle_1: "セブから日本、そしてハワイへ。",
+                fv_subtitle_2: "Humanitarian Economy（人道経済）を、共に証明する旅。",
+                fv_subtitle_3: "3月21日は牡羊座の始まりであり、新しいサイクルの始まりでもあります。",
+                fv_mission: "支援ではなく、共創へ。<br><span class='text-2xl md:text-3xl text-sakura-accent font-black font-oswald'>10,000</span> <span class='text-lg font-bold'>Pay It Forward</span> の連鎖が、<br>「善意が経済を回す」Humanitarian Economyの証明の始まりになる。",
+                btn_support: "プロジェクトに参加する",
+                journey_title: "Island to Island Peace Project",
+                journey_desc: "セブ島のピンクシャワーから始まり、日本の本物の桜、そしてハワイのALOHAへ。<br>国境を越え、経済と人道の融合を証明する20日間の旅路。",
+                challenge_title: "<span class='text-sakura-accent'>10,000食</span>の証明が、<br>希望の扉を開く。",
+                challenge_p1: "私たちのミッションは、3/21-27の期間中に10,000食のPay It Forwardを達成すること。しかし、これは単なる食事の配布ではありません。",
+                challenge_p2: "目標が達成された時、10,000人の子どもや家族を招待する<strong>「A Story of Hope Concert & Screening」</strong>（コンサート・上映会・トークセッション）が無料で幕を開けます。",
+                rule_title: "参加のルール：「Give First」",
+                rule_desc: "Humanitarian Economyにおいて、一方的な「受け取り」は存在しません。無料招待を受ける方々も、自らができる人道活動（Humanitarian Activity）を実施し、SNSで投稿・証明する必要があります。<br><strong class='block mt-3 text-sakura-accent'>「受け取るためには、先に与えること」</strong>この哲学を現地で共有し、証明することが、このプロジェクトの真髄です。",
+                story_title: "未来の希望を届けるために。<br>志を共にする仲間が動き出す。",
+                story_p1: "私たちUZUSHIO Holdingsは、日本の価値を世界に広げ、人道支援を促進するため、フィリピンの仲間と共に現地法人「UZU PH Enterprises Inc.」を設立しました。",
+                story_p2: "2026年1月の本格稼働を目指し、セブ島のThe Mactan Newtownに「SUTADONYAコンテナレストラン」の準備を進めています。",
+                story_p3: "SAKURA BLOOM 2026は、Humanitarian Economyを証明し、多くの方々に希望に触れていただくための第一歩として生まれました。これは日本とフィリピンが手を取り合い、未来の笑顔を作るための挑戦です。",
+                vision_title: "目に見える・目に見えない<br>日本の価値と共にHumanitarian Economyを創造する。",
+                vision_p1: "従来の資本主義において、資本が資本を産み数字だけが大きくなることが成功と定義される虚の世界ではなく、人間が生きていく上で根源となる <strong class='text-white font-bold'>生命の基盤</strong> である <strong class='text-white font-bold'>実の世界</strong> に焦点を当てます。この実の世界を確かなものにすることで、すべての人々が尊厳をもって生きられる <strong class='text-white font-bold'>幸の世界</strong> を創造します。",
+                vision_p2: "現代の資本主義をただ継続するだけでは、世界中の何十億人もの人間の <strong class='text-white font-bold'>尊厳ある暮らし</strong> と幸福感を確保することは難しい。私たちはそう危惧しています。私たちの目的は、一人でも多くの方がこのムーブメントの一任を担い、光に触れて救われていくこと、そしてそれを経済として持続可能性をしっかり証明していくことです。",
+                vision_p3: "経済活動を通じて、持続可能な希望のサイクルを作り出す。<br>それが、私たちが推進する「Humanitarian Economy（人道経済）」です。",
+                biz_title: "海外進出のゲートウェイ、セブ島。<br>そして世界から日本へのゲートウェイ、セブ島。",
+                biz_desc: "SAKURA BLOOM 2026期間中、御社の商品・サービスを世界へ。展示、販売、そして常設展開まで。UZUSHIO Holdingsが現地のUZU PHにコネクトします。<br><br>セブ島は成田と関西国際空港から毎日直行便が出ており、4-5時間と気軽に海外進出をするのに適しています。また、デイリーで約40,000人が近隣の既存のコーヒーショップ、レストラン、ショップなどを利用し、事実として売上の数字が現地の購買意欲により安定しているロケーションです。<br><br>年間4000万人もの観光客は増えても日本人と海外のビジネス発展まで実感が沸かない方が多いのが事実なのではないでしょうか。<br>円安の中、日本のいいものを海外の方にHumanitarianアクティビティーを促進して外貨を取得しませんか？",
+                biz_opt1_title: "The Ohanami Experience",
+                biz_opt1_desc: "セブ島の桜（ピンクシャワー）の下で日本文化を分かち合う交流の場。ブース出展や体験型イベントを通じて、国際的な認知とファンベースを構築します。",
+                biz_opt2_title: "KIZUNA Exhibition",
+                biz_opt2_desc: "日本の高品質な製品（食品、化粧品、医療、エネルギー機材等）を展示。現地富裕層やバイヤーへ直接アピールし、海外進出の足掛かりを作ります。",
+                biz_opt3_title: "KIZUNA SHOP & Ads",
+                biz_opt3_desc: "イベント後も継続的な接点を。常設ショップでの委託販売や、デジタルサイネージを活用した広告展開により、長期的なブランディングと販路拡大を支援します。",
+                biz_note: "※業種・規模・製品により最適なプランをご提案します。",
+                biz_cta_mail: "メールで問い合わせる",
+                biz_cta_meet: "オンライン商談を予約",
+                venue_title: "世界が注目する、<br>次世代のスマートタウンシップ。",
+                venue_p1: "フィリピン最大級の不動産デベロッパー <strong>Megaworld Corporation</strong> が手掛ける、約30ヘクタールの巨大プロジェクト。「住む・働く・学ぶ・楽しむ」が融合した \"Live-Work-Play-Learn\" の理念を体現する街です。",
+                venue_p2: "その格式の高さから、<strong class='text-sakura-accent'>2026年「ASEAN首脳会議」の会場</strong>にも選定。世界中のVIPが集うこの場所が、SAKURA BLOOM 2026の舞台となります。",
+                venue_p3: "しかし、その素顔は開放的でフレンドリー。週末には多くの家族連れで賑わう、安心と活気に満ちたコミュニティです。この場所から、Humanitarian Economyの波を世界へ広げていきます。",
+                action_title: "世界を変える一端を担う Pay It Forward Ticket",
+                action_sub: "恩送りチケット購入ミッション",
+                action_desc: "<p class='mb-4'>「伝説のすた丼屋」は人道経済のパートナー。</p><p class='mb-4 text-sm text-gray-600 bg-gray-50 p-4 rounded-lg border-l-4 border-sakura-accent'>昨年のクリスマスには、共に200食をスラム街の子供たちへ直接届けました。<br><a href='https://uzuworld.com' target='_blank' class='inline-flex items-center text-uzu-blue font-bold hover:text-sakura-accent mt-2 underline flex-wrap'><i class='fas fa-external-link-alt mr-1'></i> Sutadon Christmas 2025企画はこちら</a></p><p class='mb-4'><strong class='text-sakura-accent text-xl border-b-2 border-sakura-accent/30 inline-block pb-1'>購入した数だけ、現地の子供や家族など、コンサートにご招待し、希望に触れる機会を渡せます。</strong></p><span class='text-sm text-gray-600 block mt-4'>購入いただいたチケットは、イベント開催期間中にHumanitarian Economyを促進した現地の子供たちやその家族に責任を持って直接届けられます。（コンサートに来られた方々にも抽選で無料で食べられます。）<br><strong>【会場特典】購入して終わりではありません、現地のコンサート会場で購入完了画面を提示してください。コンサートへの無料入場をプレゼントいたします！</strong></span>",
+                btn_checkout: "Pay It Forward Ticketを購入する",
+                footer_tokusho: "特定商取引法に基づく表記",
+                footer_privacy: "プライバシーポリシー",
+                p1_title: "The Ohanami Experience",
+                p1_desc_text: "マクタンニュータウンに咲く桜の下で、10,000食のすた丼Pay It Forwardを実施。「受け取るために与える」Humanitarian Economyの実証実験を開始します。",
+                p1_list: "<li class='flex items-center'><i class='fas fa-check-circle text-sakura-accent mr-2'></i> Pay It Forward 10,000 Challenge</li><li class='flex items-center'><i class='fas fa-check-circle text-sakura-accent mr-2'></i> KIZUNA Exhibition / SHOP</li><li class='flex items-center'><i class='fas fa-check-circle text-sakura-accent mr-2'></i> Concerts & Screening with 10,000 audience</li>",
+                p2_title: "Real Sakura & Business Tour",
+                p2_desc: "大阪・京都から東京・神奈川へ。日本の本物の桜を愛でながら、海外投資家やパートナーと企業訪問を行うクローズドツアー。ビジネス促進と文化交流の融合。",
+                p3_title: "Island to Island Peace Project",
+                p3_desc_text: "Kona & Oahu。セブ島から始まったバトンをハワイへ。現地のパートナーと共にHumanitarian Economyを促進し、環太平洋の平和と経済の架け橋を作ります。",
+                p3_list: "<li class='flex items-center'><i class='fas fa-check-circle text-green-500 mr-2'></i> Local Partnership</li><li class='flex items-center'><i class='fas fa-check-circle text-green-500 mr-2'></i> Global Peace Initiative</li><li class='flex items-center'><i class='fas fa-check-circle text-green-500 mr-2'></i> Pacific Economic Bridge</li>",
+                tier_1_benefit: "コンサート無料入場",
+                tier_2_benefit: "優先席 (Priority Seat)",
+                tier_3_benefit: "優先席 + VIPディナー参加権（有料）",
+                tier_4_benefit: "VIP席 + VIPディナー参加権（有料）",
+                tier_5_benefit: "VIP席 + VIPディナーご招待（無料）＋期間限定オファー展示出展無料",
+                tier_6_benefit: "VIP席 + VIPディナーご招待 + スペシャルスポンサー＋期間限定オファーKIZUNA Exhibition展示出展無料＋KIZUNA Shop出展3ヶ月無料"
+            },
+            en: {
+                header_cta: "Be Part of the Change",
+                fv_subtitle_1: "From Cebu to Japan, then Hawaii.",
+                fv_subtitle_2: "A journey to prove the Humanitarian Economy together.",
+                fv_subtitle_3: "March 21 is the start of the star zodiac sign of Aries, marking the beginning of a new cycle.",
+                fv_mission: "Not just aid, but co-creation.<br>A chain of <span class='text-2xl md:text-3xl text-sakura-accent font-black font-oswald'>10,000</span> <span class='text-lg font-bold'>Pay It Forward</span> meals<br>becomes the beginning of proof for a Humanitarian Economy where 'goodwill drives the economy'.",
+                btn_support: "Join the Project",
+                journey_title: "Island to Island Peace Project",
+                journey_desc: "Starting from the Pink Shower in Cebu, to the real Sakura in Japan, and then to ALOHA in Hawaii.<br>A 20-day journey proving the fusion of economy and humanity across borders.",
+                challenge_title: "The Proof of <span class='text-sakura-accent'>10,000 Meals</span><br>Opens the Door to Hope.",
+                challenge_p1: "Our mission is to achieve 10,000 Pay It Forward meals during March 21-27. But this is not merely food distribution.",
+                challenge_p2: "When the goal is met, the <strong>'A Story of Hope Concert & Screening'</strong> (Concert, Screening, Talk Session) will open for free, inviting 10,000 children and families.",
+                rule_title: "Participation Rule: 'Give First'",
+                rule_desc: "In the Humanitarian Economy, one-sided 'receiving' does not exist. Even those receiving free invitations must perform a Humanitarian Activity and prove it by posting on SNS.<br><strong class='block mt-3 text-sakura-accent'>'To receive, you must give first.'</strong> Sharing and proving this philosophy locally is the essence of this project.",
+                story_title: "To Deliver Hope for the Future.<br>Allies with Shared Ambitions Begin to Move.",
+                story_p1: "We, UZUSHIO Holdings, established the local subsidiary 'UZU PH Enterprises Inc.' with our Philippine partners to spread Japanese values to the world and promote humanitarian aid.",
+                story_p2: "We are proceeding with preparations for the 'SUTADONYA Container Restaurant' in The Mactan Newtown, Cebu, aiming for full-scale operation in January 2026.",
+                story_p3: "SAKURA BLOOM 2026 was born as the first step to prove the Humanitarian Economy and to let many people touch hope. It is a challenge for Japan and the Philippines to join hands and create smiles for the future.",
+                vision_title: "Creating a Humanitarian Economy with Japanese Values,<br>Visible and Invisible.",
+                vision_p1: "We focus not on the imaginary world where success is defined only by capital growing capital, but on the <strong class='text-white font-bold'>real world</strong> which is the <strong class='text-white font-bold'>foundation of life</strong> essential for human survival. By securing this real world, we create a <strong class='text-white font-bold'>world of happiness</strong> where everyone can live with dignity.",
+                vision_p2: "We fear that simply continuing modern capitalism makes it difficult to secure <strong class='text-white font-bold'>dignified living</strong> and happiness for billions of people around the world. Our purpose is for as many people as possible to take part in this movement, be touched and saved by the light, and to firmly prove its sustainability as an economy.",
+                biz_opt3_desc: "Maintain continuous contact even after the event. Support long-term branding and sales channel expansion through consignment sales at permanent shops and advertising using digital signage.",
+                biz_note: "*We will propose the optimal plan according to industry, scale, and product.",
+                biz_cta_mail: "Inquiry via Email",
+                biz_cta_meet: "Book Online Meeting",
+                venue_title: "A Next-Generation Smart Township<br>The World is Watching.",
+                venue_p1: "A massive 30-hectare project by <strong>Megaworld Corporation</strong>, the Philippines' largest real estate developer. It is a town that embodies the philosophy of \"Live-Work-Play-Learn\".",
+                venue_p2: "Due to its high prestige, it has been selected as the venue for the <strong class='text-sakura-accent'>2026 ASEAN Summit</strong>. This place, where VIPs from all over the world gather, will be the stage for SAKURA BLOOM 2026.",
+                venue_p3: "However, its true face is open and friendly. It is a safe and vibrant community bustling with many families on weekends. From here, we will spread the wave of the Humanitarian Economy to the world.",
+                action_title: "Bear a part in changing the world with Pay It Forward Ticket",
+                action_sub: "Pay It Forward Ticket Mission",
+                action_desc: "<p class='mb-4'>'Legendary Sutadon' is a partner of the Humanitarian Economy.</p><p class='mb-4 text-sm text-gray-600 bg-gray-50 p-4 rounded-lg border-l-4 border-sakura-accent'>Last Christmas, we worked together to deliver 200 meals directly to children in the slums.<br><a href='https://uzuworld.com' target='_blank' class='inline-flex items-center text-uzu-blue font-bold hover:text-sakura-accent mt-2 underline flex-wrap'><i class='fas fa-external-link-alt mr-1'></i> Sutadon Christmas 2025 Project Here</a></p><p class='mb-4'><strong class='text-sakura-accent text-xl border-b-2 border-sakura-accent/30 inline-block pb-1'>Your benevolence delivers music and hope to the people of Mactan.</strong></p><span class='text-sm text-gray-600 block mt-4'>Purchased tickets will be responsibly delivered directly to local children and their families who promoted the Humanitarian Economy during the event. (Those who come to the concert may also be able to eat for free by lottery.)<br><strong>[Venue Benefit] It does not end with the purchase. Please present the purchase completion screen at the local concert venue. We will present you with free admission to the concert!</strong></span>",
+                btn_checkout: "Purchase Ticket & Pay It Forward",
+                footer_tokusho: "Specified Commercial Transactions Act",
+                footer_privacy: "Privacy Policy",
+                p1_title: "The Ohanami Experience",
+                p1_desc_text: "Executing 10,000 Sutadon Pay It Forward meals under the Sakura in Mactan Newtown. Starting the proof of concept of 'Give to Receive' Humanitarian Economy.",
+                p1_list: "<li class='flex items-center'><i class='fas fa-check-circle text-sakura-accent mr-2'></i> Pay It Forward 10,000 Challenge</li><li class='flex items-center'><i class='fas fa-check-circle text-sakura-accent mr-2'></i> KIZUNA Exhibition / SHOP</li><li class='flex items-center'><i class='fas fa-check-circle text-sakura-accent mr-2'></i> Concerts & Screening with 10,000 audience</li>",
+                p2_title: "Real Sakura & Business Tour",
+                p2_desc: "From Osaka/Kyoto to Tokyo/Kanagawa. A closed tour visiting companies with overseas investors and partners while admiring real Sakura in Japan. Fusion of business promotion and cultural exchange.",
+                p3_title: "Island to Island Peace Project",
+                p3_desc_text: "Kona & Oahu. Passing the baton started in Cebu to Hawaii. Promoting Humanitarian Economy with local partners and building a bridge of peace and economy across the Pacific Rim.",
+                p3_list: "<li class='flex items-center'><i class='fas fa-check-circle text-green-500 mr-2'></i> Local Partnership</li><li class='flex items-center'><i class='fas fa-check-circle text-green-500 mr-2'></i> Global Peace Initiative</li><li class='flex items-center'><i class='fas fa-check-circle text-green-500 mr-2'></i> Pacific Economic Bridge</li>",
+                tier_1_benefit: "Free Concert Entry",
+                tier_2_benefit: "Priority Seat",
+                tier_3_benefit: "Priority Seat + VIP Dinner Access (Paid)",
+                tier_4_benefit: "VIP Seat + VIP Dinner Access (Paid)",
+                tier_5_benefit: "VIP Seat + Free VIP Dinner Invite + Limited Time Offer: Free Exhibition Booth",
+                tier_6_benefit: "VIP Seat + Free VIP Dinner + Special Sponsor + Limited Time Offer: Free KIZUNA Exhibition Booth + Free KIZUNA Shop Booth (3 Months)"
+            }
+        };
+
+        let currentLang = 'ja';
+
+        window.toggleLanguage = function() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            document.getElementById('lang-label').textContent = currentLang === 'ja' ? 'English' : '日本語';
+            
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    element.innerHTML = translations[currentLang][key];
+                }
+            });
+        };
+    </script>
+</body>
+</html>
