@@ -116,21 +116,26 @@
             <!-- Logos -->
             <div class="flex items-center gap-2 md:gap-4">
                 <div class="flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
-                    <div class="text-uzu-blue font-bold text-xs md:text-lg tracking-tighter border-2 border-uzu-blue px-1.5 py-0.5 md:px-2 md:py-0.5 leading-tight">
-                        UZUSHIO<span class="text-[10px] block font-normal md:inline md:ml-1">Holdings</span>
+                    <div class="text-uzu-blue font-bold text-[10px] md:text-lg tracking-tighter border-2 border-uzu-blue px-1.5 py-0.5 md:px-2 md:py-0.5 leading-tight">
+                        UZUSHIO<span class="text-[8px] md:text-[10px] block font-normal md:inline md:ml-1">Holdings</span>
                     </div>
                     <span class="text-gray-400 hidden md:block text-base">×</span>
-                    <div class="text-uzu-blue font-bold text-xs md:text-lg tracking-tighter border-2 border-uzu-blue px-1.5 py-0.5 md:px-2 md:py-0.5 leading-tight">
-                        UZU PH<span class="text-[10px] block font-normal md:inline md:ml-1">Enterprises Inc.</span>
+                    <div class="text-uzu-blue font-bold text-[10px] md:text-lg tracking-tighter border-2 border-uzu-blue px-1.5 py-0.5 md:px-2 md:py-0.5 leading-tight">
+                        UZU PH<span class="text-[8px] md:text-[10px] block font-normal md:inline md:ml-1">Enterprises Inc.</span>
                     </div>
                 </div>
             </div>
             
             <!-- Language & CTA -->
-            <div class="flex items-center gap-3 md:gap-4">
-                <button type="button" onclick="window.toggleLanguage()" class="flex items-center gap-1 text-uzu-blue hover:text-sakura-accent transition text-sm md:text-base px-3 py-1 rounded-full border border-gray-200 hover:bg-pink-50 cursor-pointer">
+            <div class="flex items-center gap-2 md:gap-4">
+                <!-- 【NEW】 Mobile Pay It Forward Button -->
+                <a href="https://uzuworld.com/payment.html" class="md:hidden bg-gradient-to-r from-sakura-accent to-pink-500 text-white font-bold py-1.5 px-3 rounded-full shadow-md text-[10px] whitespace-nowrap flex items-center hover:scale-105 transition">
+                    <i class="fas fa-heart mr-1"></i> Pay It Forward
+                </a>
+
+                <button type="button" onclick="window.toggleLanguage()" class="flex items-center gap-1 text-uzu-blue hover:text-sakura-accent transition text-sm md:text-base px-2 py-1 md:px-3 rounded-full border border-gray-200 hover:bg-pink-50 cursor-pointer">
                     <i class="fas fa-globe"></i>
-                    <span id="lang-label">English</span>
+                    <span id="lang-label" class="text-xs md:text-base">English</span>
                 </button>
                 <a href="https://uzuworld.com/payment.html" class="hidden md:block bg-gradient-to-r from-sakura-accent to-pink-500 text-white font-bold py-2 px-6 rounded-full shadow-lg transition transform hover:scale-105 text-sm">
                     <i class="fas fa-hand-sparkles mr-2"></i><span data-i18n="header_cta">世界を変える一端を担う</span>
@@ -207,7 +212,7 @@
     </section>
 
     <!-- 【NEW】 Sponsors Section -->
-    <section class="py-12 bg-gray-50/80 backdrop-blur-sm border-b border-gray-200/50">
+    <section class="py-12 bg-white border-b border-gray-100">
         <div class="container mx-auto px-4 text-center">
             <p class="text-sakura-accent font-oswald text-xs md:text-sm tracking-[0.2em] uppercase mb-8 opacity-80">Official Sponsors</p>
             <!-- Removed 'grayscale hover:grayscale-0' classes to show original colors always -->
