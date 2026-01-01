@@ -108,7 +108,7 @@
     <!-- 【Header】 -->
     <header class="fixed top-0 left-0 w-full shadow-sm z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-pink-100 flex flex-col">
         <!-- Date Banner -->
-        <div class="bg-sakura-accent text-white text-center py-1 text-xs md:text-sm font-bold tracking-widest w-full font-oswald">
+        <div class="bg-sakura-accent text-white text-center py-1 text-xs md:text-sm font-bold tracking-widest w-full font-oswald" data-i18n="header_date">
             2026年3月21日(土) 〜 4月9日(木)
         </div>
         
@@ -128,7 +128,7 @@
             
             <!-- Language & CTA -->
             <div class="flex items-center gap-2 md:gap-4">
-                <!-- 【NEW】 Mobile Pay It Forward Button -->
+                <!-- Mobile Pay It Forward Button -->
                 <a href="https://uzuworld.com/payment.html" class="md:hidden bg-gradient-to-r from-sakura-accent to-pink-500 text-white font-bold py-1.5 px-3 rounded-full shadow-md text-[10px] whitespace-nowrap flex items-center hover:scale-105 transition">
                     <i class="fas fa-heart mr-1"></i> Pay It Forward
                 </a>
@@ -137,8 +137,10 @@
                     <i class="fas fa-globe"></i>
                     <span id="lang-label" class="text-xs md:text-base">English</span>
                 </button>
+                
+                <!-- Updated PC Pay It Forward Button (Unified with Mobile) -->
                 <a href="https://uzuworld.com/payment.html" class="hidden md:block bg-gradient-to-r from-sakura-accent to-pink-500 text-white font-bold py-2 px-6 rounded-full shadow-lg transition transform hover:scale-105 text-sm">
-                    <i class="fas fa-hand-sparkles mr-2"></i><span data-i18n="header_cta">世界を変える一端を担う</span>
+                    <i class="fas fa-heart mr-2"></i> Pay It Forward
                 </a>
             </div>
         </div>
@@ -824,6 +826,7 @@
         // Language Toggle Logic (Partial Implementation for Demo)
         const translations = {
             ja: {
+                header_date: "2026年3月21日(土) 〜 4月9日(木)",
                 header_cta: "世界を変える一端を担う",
                 fv_subtitle_1: "セブから日本、そしてハワイへ。",
                 fv_subtitle_2: "Humanitarian Economy（人道経済）を、共に証明する旅。",
@@ -882,6 +885,7 @@
                 tier_6_benefit: "VIP Seat + Free VIP Dinner + Special Sponsor + Limited Time Offer: Free KIZUNA Exhibition Booth + Free KIZUNA Shop Booth (3 Months)"
             },
             en: {
+                header_date: "March 21 (Sat) - April 9 (Thu), 2026",
                 header_cta: "Be Part of the Change",
                 fv_subtitle_1: "From Cebu to Japan, then Hawaii.",
                 fv_subtitle_2: "A journey to prove the Humanitarian Economy together.",
